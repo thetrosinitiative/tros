@@ -1,0 +1,14 @@
+flutter_native_splash:
+  color: '#529c4f'
+  color_dark: '#529c4f'
+  image: assets/images/logo/top.png
+  image_dark: assets/images/logo/top.png
+
+  android_12:
+    color: '#529c4f'
+    color_dark: '#529c4f'
+    image: assets/images/logo/top.png
+    image_dark: assets/images/logo/top.png  
+
+  web: false
+# run flutter pub run flutter_native_splash:create --path=splash.yaml

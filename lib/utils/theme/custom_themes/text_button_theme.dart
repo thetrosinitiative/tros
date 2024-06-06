@@ -10,7 +10,7 @@ class TTextButtonTheme {
     elevation: 0,
     // side: const BorderSide(color: PColors.primary),
     textStyle: const TextStyle(
-        fontSize: 16, color: PColors.white, fontWeight: FontWeight.w600),
+        fontSize: 16, color: PColors.primary, fontWeight: FontWeight.w600),
   ));
 
   static final darkTextButtonTheme = TextButtonThemeData(
@@ -20,6 +20,6 @@ class TTextButtonTheme {
     backgroundColor: PColors.transparent,
 
     textStyle: const TextStyle(
-        fontSize: 16, color: PColors.white, fontWeight: FontWeight.w600),
+        fontSize: 16, color: PColors.primary, fontWeight: FontWeight.w600),
   ));
 }

@@ -21,7 +21,7 @@ class PTermsAndConditions extends StatelessWidget {
           height: 24,
           child: Checkbox(
             value: true,
-            onChanged: (vaalue) {},
+            onChanged: (value) {},
           ),
         ),
         const SizedBox(

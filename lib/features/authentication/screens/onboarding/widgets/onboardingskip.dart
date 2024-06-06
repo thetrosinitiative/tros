@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tros/utils/constants/colors.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
@@ -16,7 +17,10 @@ class OnBoardingSkip extends StatelessWidget {
       right: PSizes.defaultSpace,
       child: TextButton(
         onPressed: () => OnBoardingController.instance.skipPage(),
-        child: const Text('Skip'),
+        child: const Text(
+          'Skip',
+          style: TextStyle(color: PColors.primary),
+        ),
       ),
     );
   }

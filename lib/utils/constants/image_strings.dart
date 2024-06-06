@@ -1,6 +1,6 @@
 class PImages {
   //  APP LOGOS
-  static const String appLogo = 'assets/images/logo_images/p black resized.png';
+  static const String appLogo = 'assets/images/logo/top2.png';
   static const String lightAppLogo = 'assets/images/p white.png';
 
 //   SOCIAL LOGOS

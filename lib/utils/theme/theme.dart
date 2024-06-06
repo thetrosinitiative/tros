@@ -27,6 +27,7 @@ class TAppTheme {
       inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
       chipTheme: TChipTheme.lightThemeChipTheme,
       textButtonTheme: TTextButtonTheme.lightTextButtonTheme);
+
   static ThemeData darkTheme = ThemeData(
       fontFamily: 'poppins',
       brightness: Brightness.dark,

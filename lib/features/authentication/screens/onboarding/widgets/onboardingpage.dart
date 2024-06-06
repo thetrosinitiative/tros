@@ -17,14 +17,20 @@ class OnBoardingPage extends StatelessWidget {
       padding: const EdgeInsets.all(PSizes.defaultSpace),
       child: Column(
         children: [
+          const SizedBox(
+            height: PSizes.iconMd + 4,
+          ),
           Image(
             width: PHelperFunctions.screenWidth() * 0.8,
-            height: PHelperFunctions.screenHeight() * 0.6,
+            height: PHelperFunctions.screenHeight() * 0.55,
             image: AssetImage(image),
           ),
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context)
+                .textTheme
+                .headlineLarge!
+                .apply(letterSpacingDelta: 2, fontWeightDelta: -1),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
@@ -32,7 +38,8 @@ class OnBoardingPage extends StatelessWidget {
           ),
           Text(
             subtitle,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style:
+                Theme.of(context).textTheme.bodyMedium!.apply(fontSizeDelta: 2),
             textAlign: TextAlign.center,
           )
         ],

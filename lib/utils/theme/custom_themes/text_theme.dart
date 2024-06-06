@@ -7,7 +7,7 @@ class TTextTheme {
 
   static TextTheme lightTextTheme = TextTheme(
       headlineLarge: const TextStyle().copyWith(
-          fontSize: 32, fontWeight: FontWeight.bold, color: PColors.dark),
+          fontSize: 34, fontWeight: FontWeight.w500, color: PColors.dark),
       headlineMedium: const TextStyle().copyWith(
           fontSize: 24.0, fontWeight: FontWeight.w600, color: PColors.dark),
       headlineSmall: const TextStyle().copyWith(
@@ -34,7 +34,7 @@ class TTextTheme {
           color: PColors.dark.withOpacity(0.5)));
   static TextTheme darkTextTheme = TextTheme(
       headlineLarge: const TextStyle().copyWith(
-          fontSize: 32, fontWeight: FontWeight.bold, color: PColors.light),
+          fontSize: 34, fontWeight: FontWeight.w500, color: PColors.light),
       headlineMedium: const TextStyle().copyWith(
           fontSize: 24.0, fontWeight: FontWeight.w600, color: PColors.light),
       headlineSmall: const TextStyle().copyWith(

@@ -48,7 +48,7 @@ class PTexts {
   // Authentication headings
   static const String loginTitle = "Welcome back";
   static const String loginSubtitle =
-      "Discover Limitless Choices and Unlimited Convenience";
+      "Let's continue our journey to make the environment better and greener. ";
   static const String signUpTitle = "Let's Create Your Account";
   static const String forgetPasswordTitle = "Forget Pasword";
   static const String forgetPasswordSubtitle =
