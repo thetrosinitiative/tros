@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tros/utils/constants/colors.dart';
+import 'package:tros/utils/constants/image_strings.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -23,7 +25,7 @@ class ReusableEmailWidget extends StatelessWidget {
       children: [
         // IMAGE
         Image(
-          image: AssetImage(image),
+          image: const AssetImage(PImages.appLogo),
           width: PHelperFunctions.screenWidth() * 0.6,
         ),
         const SizedBox(
@@ -32,7 +34,10 @@ class ReusableEmailWidget extends StatelessWidget {
         // TITLE
         Text(
           title,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context)
+              .textTheme
+              .headlineMedium!
+              .apply(color: PColors.primary),
           textAlign: TextAlign.center,
         ),
         const SizedBox(

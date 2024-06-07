@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:tros/features/authentication/screens/login/login.dart';
 import 'package:tros/features/authentication/screens/password_config/reset_password.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
@@ -10,15 +11,14 @@ import 'package:tros/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+class ChangePasswordScreen extends StatelessWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      // appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: PSpacingStyle.paddingWithAppBarHeight,
@@ -35,19 +35,19 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ),
                 ),
               ),
+
+// RESET PASSWORD TITLE
               Text(
-                PTexts.forgetPasswordTitle,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .apply(color: PColors.primary),
+                PTexts.resetPasswordTitle,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(
                 height: PSizes.spaceBtwItems,
               ),
+// RESET PASSWORD SUBTITLE
 
               Text(
-                PTexts.forgetPasswordSubtitle,
+                PTexts.resetPasswordSubtitle,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(
@@ -58,11 +58,11 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
               // TEXTFIELD
               Text(
-                'Email',
+                'Enter a new password',
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(
-                height: PSizes.spaceBtwItems,
+                height: PSizes.spaceBtwItems / 4,
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -71,34 +71,37 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: PSizes.spaceBtwSections * 9,
+                height: PSizes.spaceBtwItems,
               ),
-              // SUBMIT BUTTON
-              // SizedBox.expand(
-              //   child: const Spacer(
-              //     flex: 2,
-              //   ),
-              // ),
+              Text(
+                'Confirm password',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+              const SizedBox(
+                height: PSizes.spaceBtwItems / 4,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: PTexts.email,
+                  // prefixIcon: Icon(Iconsax.direct_bold),
+                ),
+              ),
+              const SizedBox(
+                height: PSizes.spaceBtwSections,
+              ),
+
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              isDark ? PColors.primary : PColors.grey,
-                        ),
-                        onPressed: () => Get.back(),
-                        child: Text(PTexts.back,
-                            style: TextStyle(
-                                color:
-                                    isDark ? PColors.dark : PColors.darkGrey))),
-                  ),
-                  SizedBox(
-                    child: ElevatedButton(
-                        onPressed: () =>
-                            Get.off(() => const ResetPasswordScreen()),
-                        child: const Text(PTexts.next)),
+                        onPressed: () => Get.offAll(const LoginScreen()),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            'CHANGE PASSWORD',
+                          ),
+                        )),
                   ),
                 ],
               ),

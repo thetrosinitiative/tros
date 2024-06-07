@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/features/authentication/controllers/login_controller.dart';
 import 'package:tros/features/authentication/screens/password_config/forget_password.dart';
 import 'package:tros/navigation_menu.dart';
+import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -74,31 +75,53 @@ class PLoginForm extends StatelessWidget {
                 // forget password
                 TextButton(
                   onPressed: () => Get.to(() => const ForgetPasswordScreen()),
-                  child: const Text(PTexts.forgetPassword),
+                  child: Text(
+                    PTexts.forgetPassword,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelMedium!
+                        .apply(color: PColors.primary),
+                  ),
                 )
               ],
             ),
             const SizedBox(
-              height: PSizes.spaceBtwSections,
+              height: PSizes.spaceBtwItems / 2.5,
             ),
             // SignInButton
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () => Get.to(const NavigationMenu()),
-                child: const Text(PTexts.signIn),
+              height: 50,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+                child: ElevatedButton(
+                  onPressed: () => Get.to(const NavigationMenu()),
+                  child: const Text(PTexts.signIn),
+                ),
               ),
+            ),
+            const SizedBox(
+              height: PSizes.spaceBtwItems / 2.5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('${PTexts.noAccount} ',
+                    style: Theme.of(context).textTheme.bodySmall),
+                GestureDetector(
+                  onTap: () => Get.to(() => const SignupScreen()),
+                  child: Text('Sign-up ',
+                      style: Theme.of(context).textTheme.labelLarge!.apply(
+                          color: PColors.primary,
+                          decorationColor: PColors.primary,
+                          decoration: TextDecoration.underline)),
+                ),
+              ],
             ),
 
-            const SizedBox(height: PSizes.spaceBtwItems),
+            // const SizedBox(height: PSizes.spaceBtwItems),
             // create account buttons
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () => Get.to(() => const SignupScreen()),
-                child: const Text(PTexts.createAccount),
-              ),
-            ),
           ],
         ),
       ),

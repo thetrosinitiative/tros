@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/widgets/emailing/reusable_email.dart';
+import 'package:tros/features/authentication/screens/password_config/change_password.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/constants/text_strings.dart';
@@ -26,6 +27,7 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               // IMAGE WITH 60% OF SCREEN WIDTH
+
               // TITLE AND AND SUBTITLE
               // BUTTONS
               ReusableEmailWidget(
@@ -34,7 +36,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   subtitle: PTexts.changePasswordSubtitle,
                   elevatedaBtnText: PTexts.done,
                   textBtnText: PTexts.resendEmail,
-                  eOnpressed: () {},
+                  eOnpressed: () => Get.offAll(const ChangePasswordScreen()),
                   tOnpressed: () {})
             ],
           ),

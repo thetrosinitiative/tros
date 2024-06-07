@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tros/common/styles/spacing_styles.dart';
 import 'package:tros/common/widgets/signup_login/form_divider.dart';
 import 'package:tros/common/widgets/signup_login/social_button.dart';
 import 'package:tros/utils/constants/colors.dart';
@@ -14,12 +15,10 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(
-            PSizes.defaultSpace,
-          ),
+          padding: PSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

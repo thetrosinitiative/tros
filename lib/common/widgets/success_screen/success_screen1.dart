@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tros/common/styles/spacing_styles.dart';
+import 'package:tros/utils/constants/image_strings.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
@@ -24,7 +25,7 @@ class SuccessScreen1 extends StatelessWidget {
             children: [
               // IMAGE
               Image(
-                image: AssetImage(image),
+                image: const AssetImage(PImages.appLogo),
                 width: PHelperFunctions.screenWidth() * 0.6,
               ),
               const SizedBox(

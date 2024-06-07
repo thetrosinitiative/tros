@@ -14,11 +14,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: !isDark ? PColors.white : PColors.dark,
-      statusBarIconBrightness: Brightness.dark,
-      systemStatusBarContrastEnforced: true,
-    ));
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    //   statusBarColor: !isDark ? PColors.dark : PColors.dark,
+    //   statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+    //   systemStatusBarContrastEnforced: true,
+    // ));
     return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,

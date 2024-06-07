@@ -5,7 +5,9 @@ class PImages {
 
 //   SOCIAL LOGOS
   static const String google = 'assets/images/google_fb/google-icon.png';
-  static const String facebook = 'assets/images/google_fb/facebook-icon.png';
+  static const String github = 'assets/images/google_fb/github.png';
+  static const String login = 'assets/images/google_fb/login.png';
+  static const String nature = 'assets/images/google_fb/bro.png';
 
   // ONBOARDING images
 
