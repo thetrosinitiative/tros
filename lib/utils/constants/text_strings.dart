@@ -56,10 +56,10 @@ class PTexts {
   static const String signUpTitle = "Create Account";
   static const String forgetPasswordTitle = "Find your TROS account";
   static const String forgetPasswordSubtitle =
-      "Don't worry, people forget too, enter the email associated with your account and we will send you a password reset link";
+      "Don't worry, people forget too, enter the email associated with your account and we will send you a password reset code";
   static const String changePasswordTitle = "Password reset email sent";
   static const String changePasswordSubtitle =
-      "The security of your account is our priority, we've sent you a secure link to safely change your password and keep your account protected";
+      "The security of your account is our priority, we've sent you a code, verify and change your passwod to keep your account protected";
   static const String confirmEmail = "Verify your Email Address";
   static const String confirmEmailSubtitle =
       "Congrats your Account awaits: A verification link has been sent to your email.";
@@ -72,4 +72,7 @@ class PTexts {
       "Make sure your new password is 8 characters or more. Include letters, numbers, symbols for more secured password";
   static const String resetPasswordSubtitle =
       "You will be logged out of all active TROS sessions after your password is changed";
+  static const String resetCodeTitle = "We sent you a code";
+  static const String resetCodeSubtitle =
+      "Check your email to get your confirmation code. if you need to request a new code, goback and reselect a confirmation.";
 }

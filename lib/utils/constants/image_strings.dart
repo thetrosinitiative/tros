@@ -6,8 +6,10 @@ class PImages {
 //   SOCIAL LOGOS
   static const String google = 'assets/images/google_fb/google-icon.png';
   static const String github = 'assets/images/google_fb/github.png';
+  // AUTHENTICATION
   static const String login = 'assets/images/google_fb/login.png';
   static const String nature = 'assets/images/google_fb/bro.png';
+  static const String security = 'assets/images/google_fb/secure.png';
 
   // ONBOARDING images
 
@@ -17,6 +19,11 @@ class PImages {
       'assets/images/onboarding_images/trash.png';
   static const String onBoardingImage2 =
       'assets/images/onboarding_images/dancing_green.png';
+
+// HHOMEPAGE IMAGES
+  static const String dots = 'assets/images/app_images/dots.png';
+  static const String tros = 'assets/images/app_images/tros.png';
+  static const String trash = 'assets/images/app_images/trash.png';
 
   // other images
   static const String successImage =

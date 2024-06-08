@@ -77,6 +77,19 @@ class ReusableEmailWidget extends StatelessWidget {
             child: Text(textBtnText),
           ),
         ),
+        const SizedBox(
+          height: 250,
+          child: Expanded(
+            child: Center(
+              child: Image(
+                height: 170,
+                image: AssetImage(
+                  PImages.security,
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

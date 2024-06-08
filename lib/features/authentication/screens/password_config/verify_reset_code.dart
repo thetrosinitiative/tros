@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:tros/features/authentication/screens/login/login.dart';
+import 'package:tros/features/authentication/screens/password_config/change_password.dart';
 import 'package:tros/features/authentication/screens/password_config/reset_password.dart';
-import 'package:tros/features/authentication/screens/password_config/verify_reset_code.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
@@ -11,19 +12,18 @@ import 'package:tros/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+class VerifyResetCodeScreen extends StatelessWidget {
+  const VerifyResetCodeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
 
     return Scaffold(
-      // appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: PSpacingStyle.paddingWithAppBarHeight,
-          child: Column(
+        body: SingleChildScrollView(
+      child: Padding(
+        padding: PSpacingStyle.paddingWithAppBarHeight,
+        child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,8 +36,10 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ),
                 ),
               ),
+
+// VERIFY CODE TITLE
               Text(
-                PTexts.forgetPasswordTitle,
+                PTexts.resetCodeTitle,
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!
@@ -46,40 +48,35 @@ class ForgetPasswordScreen extends StatelessWidget {
               const SizedBox(
                 height: PSizes.spaceBtwItems,
               ),
-
+              // VERIFY CODE SUBTITLE
               Text(
-                PTexts.forgetPasswordSubtitle,
+                PTexts.resetCodeSubtitle,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(
-                height: PSizes.spaceBtwSections,
+                height: PSizes.spaceBtwItems,
               ),
               const SizedBox(
                 height: PSizes.spaceBtwSections,
               ),
               // TEXTFIELD
               Text(
-                'Email',
+                'Enter code',
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(
-                height: PSizes.spaceBtwItems,
+                height: PSizes.spaceBtwItems / 4,
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: PTexts.email,
-                  // prefixIcon: Icon(Iconsax.direct_bold),
-                ),
+                    hintText: 'E.g. jrfmin237',
+                    hintStyle: TextStyle(color: PColors.darkGrey, fontSize: 14)
+                    // prefixIcon: Icon(Iconsax.direct_bold),
+                    ),
               ),
               const SizedBox(
-                height: PSizes.spaceBtwSections * 9,
+                height: PSizes.spaceBtwSections * 8,
               ),
-              // SUBMIT BUTTON
-              // SizedBox.expand(
-              //   child: const Spacer(
-              //     flex: 2,
-              //   ),
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -98,16 +95,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                   SizedBox(
                     child: ElevatedButton(
                         onPressed: () =>
-                            Get.off(() => const ResetPasswordScreen()),
+                            Get.off(() => const ChangePasswordScreen()),
                         child: const Text(PTexts.next)),
                   ),
+                  // const Spacer(),
                 ],
               ),
-              // const Spacer(),
-            ],
-          ),
-        ),
+            ]),
       ),
-    );
+    ));
   }
 }

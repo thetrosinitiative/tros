@@ -3,8 +3,8 @@ import 'package:tros/utils/constants/sizes.dart';
 
 import '../../../../utils/constants/colors.dart';
 
-class PRoundedContainer extends StatelessWidget {
-  const PRoundedContainer({
+class TRoundedContainer extends StatelessWidget {
+  const TRoundedContainer({
     super.key,
     this.width,
     this.height,

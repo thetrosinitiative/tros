@@ -14,24 +14,26 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
 
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    //   statusBarColor: !isDark ? PColors.dark : PColors.dark,
-    //   statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-    //   systemStatusBarContrastEnforced: true,
-    // ));
-    return GetMaterialApp(
-      themeMode: ThemeMode.system,
-      theme: TAppTheme.lightTheme,
-      darkTheme: TAppTheme.darkTheme,
-      home: const Scaffold(
-        backgroundColor: PColors.primary,
-        body: Center(
-          child: CircularProgressIndicator(
-            color: Colors.white,
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: !isDark ? PColors.white : PColors.dark,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      systemStatusBarContrastEnforced: true,
+    ));
+    return SafeArea(
+      child: GetMaterialApp(
+        themeMode: ThemeMode.system,
+        theme: TAppTheme.lightTheme,
+        darkTheme: TAppTheme.darkTheme,
+        home: const Scaffold(
+          backgroundColor: PColors.primary,
+          body: Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
           ),
         ),
+        debugShowCheckedModeBanner: false,
       ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
