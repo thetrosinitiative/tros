@@ -79,13 +79,11 @@ class ReusableEmailWidget extends StatelessWidget {
         ),
         const SizedBox(
           height: 250,
-          child: Expanded(
-            child: Center(
-              child: Image(
-                height: 170,
-                image: AssetImage(
-                  PImages.security,
-                ),
+          child: Center(
+            child: Image(
+              height: 170,
+              image: AssetImage(
+                PImages.security,
               ),
             ),
           ),

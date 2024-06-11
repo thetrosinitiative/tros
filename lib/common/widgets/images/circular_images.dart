@@ -15,6 +15,7 @@ class PCircularImage extends StatelessWidget {
     this.backgroundColor,
     this.fit = BoxFit.cover,
     this.overLayColor,
+    this.insetsPadding,
   });
 
   final String imageUrl;
@@ -23,14 +24,14 @@ class PCircularImage extends StatelessWidget {
   final Color? backgroundColor;
   final BoxFit? fit;
   final Color? overLayColor;
-
+  final EdgeInsetsGeometry? insetsPadding;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(padding),
+      padding: insetsPadding ?? EdgeInsets.all(padding),
       decoration: BoxDecoration(
           color: backgroundColor ?? (isDark ? PColors.dark : PColors.white),
           borderRadius: BorderRadius.circular(100)),

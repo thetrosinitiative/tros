@@ -17,11 +17,13 @@ class PRoundedImage extends StatelessWidget {
     this.onPressed,
     this.border,
     this.borderRadius = PSizes.md,
+    this.color,
   });
   final String imageUrl;
   final double? width, height;
   final bool applyImageRadius, isNetworkImage;
   final Color backgroundColor;
+  final Color? color;
   final BoxFit? fit;
   final BoxBorder? border;
   final EdgeInsetsGeometry? padding;
@@ -48,6 +50,7 @@ class PRoundedImage extends StatelessWidget {
                 ? BorderRadius.circular(borderRadius)
                 : BorderRadius.zero,
             child: Image(
+              color: color,
               image: isNetworkImage
                   ? NetworkImage(imageUrl)
                   : AssetImage(imageUrl) as ImageProvider,

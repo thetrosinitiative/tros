@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -23,5 +24,10 @@ Future<void> main() async {
   Get.put(AuthenticationRepository());
 
 // Load all the material design / Themes / Localization / Bindings
+  // runApp(DevicePreview(
+  //   builder: (BuildContext context) {
+  //     return const App();
+  //   },
+  // ));
   runApp(const App());
 }

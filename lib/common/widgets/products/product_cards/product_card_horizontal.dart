@@ -32,7 +32,7 @@ class PProductCardHorizontal extends StatelessWidget {
         child: Row(
           children: [
             // Thumbnail
-            PRoundedContainer(
+            TRoundedContainer(
               height: 120,
               padding: const EdgeInsets.all(PSizes.sm),
               backgroundColor: isDark ? PColors.black : PColors.white,

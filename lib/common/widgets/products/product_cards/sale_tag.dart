@@ -25,7 +25,7 @@ class SaleTagWidget extends StatelessWidget {
       bottom: bottom,
       left: left,
       right: right,
-      child: PRoundedContainer(
+      child: TRoundedContainer(
         radius: PSizes.sm,
         backgroundColor: backgrondColor.withOpacity(0.8),
         padding: const EdgeInsets.symmetric(

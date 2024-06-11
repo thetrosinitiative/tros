@@ -35,7 +35,7 @@ class PProductCardVertical extends StatelessWidget {
         child: Column(
           //Thumbnail. wishlist button, discount tag
           children: [
-            PRoundedContainer(
+            TRoundedContainer(
               height: 175,
               padding: const EdgeInsets.all(PSizes.sm),
               backgroundColor: isDark ? PColors.black : PColors.light,

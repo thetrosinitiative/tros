@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tros/features/authentication/controllers/login_controller.dart';
 import 'package:tros/features/authentication/screens/password_config/forget_password.dart';
+import 'package:tros/features/authentication/screens/signup/signup.dart';
 import 'package:tros/navigation_menu.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/validators/validation.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../signup/signup.dart';
 
 class PLoginForm extends StatelessWidget {
   const PLoginForm({
@@ -27,6 +28,7 @@ class PLoginForm extends StatelessWidget {
           children: [
             // Email
             TextFormField(
+              controller: controller.email,
               validator: TValidator.validateEmail,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right_outline),
@@ -39,6 +41,7 @@ class PLoginForm extends StatelessWidget {
             //Password
             Obx(() {
               return TextFormField(
+                controller: controller.password,
                 obscureText: controller.hidePassword.value,
                 validator: (value) =>
                     TValidator.validateEmptyText('Password', value),
@@ -74,7 +77,7 @@ class PLoginForm extends StatelessWidget {
                 ),
                 // forget password
                 TextButton(
-                  onPressed: () => Get.to(() => const ForgetPasswordScreen()),
+                  onPressed: () => Get.to(() => const NavigationMenu()),
                   child: Text(
                     PTexts.forgetPassword,
                     style: Theme.of(context)
@@ -96,8 +99,14 @@ class PLoginForm extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
                 child: ElevatedButton(
-                  onPressed: () => Get.to(const NavigationMenu()),
-                  child: const Text(PTexts.signIn),
+                  onPressed: () => controller.signin(),
+                  child: //
+                      Obx(() {
+                    return controller.isLoading.value
+                        ? LoadingAnimationWidget.staggeredDotsWave(
+                            color: PColors.white, size: 50)
+                        : const Text(PTexts.signIn);
+                  }),
                 ),
               ),
             ),

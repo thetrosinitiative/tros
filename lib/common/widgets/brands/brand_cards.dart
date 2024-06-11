@@ -20,7 +20,7 @@ class BrandCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: PRoundedContainer(
+      child: TRoundedContainer(
         padding: const EdgeInsets.all(PSizes.sm),
         showBorder: showBorder,
         backgroundColor: Colors.transparent,

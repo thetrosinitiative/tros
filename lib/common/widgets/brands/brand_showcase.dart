@@ -15,8 +15,7 @@ class BrandShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
-
-    return PRoundedContainer(
+    return TRoundedContainer(
       padding: const EdgeInsets.all(PSizes.md),
       showBorder: true,
       borderColor: PColors.darkGrey,
@@ -46,7 +45,7 @@ class BrandShowcase extends StatelessWidget {
   // ignore: non_constant_identifier_names
   Widget BrandProductShocaseImage(bool isDark, String image, context) {
     return Expanded(
-      child: PRoundedContainer(
+      child: TRoundedContainer(
         height: 100,
         backgroundColor: isDark ? PColors.darkerGrey : PColors.light,
         margin: const EdgeInsets.only(right: PSizes.sm),

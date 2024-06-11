@@ -10,8 +10,9 @@ import '../../../../common/widgets/emailing/reusable_email.dart';
 import '../login/login.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, required this.email});
 
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

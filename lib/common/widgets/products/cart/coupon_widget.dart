@@ -14,7 +14,7 @@ class CouponCodeField extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
 
-    return PRoundedContainer(
+    return TRoundedContainer(
       showBorder: true,
       backgroundColor: isDark ? PColors.dark : PColors.white,
       padding: const EdgeInsets.only(

@@ -96,13 +96,13 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomePage(),
-    const RedeemPage(),
+    const ShoppingPage(),
     const MapPage(),
     const ProfilePage()
   ];
   final List<IconData> listOfIcons = [
     Icons.home_rounded,
-    Iconsax.gift_outline,
+    Iconsax.shop_outline,
     Iconsax.location_outline,
     Icons.person_rounded,
   ];

@@ -17,11 +17,16 @@ class PSocialButton extends StatelessWidget {
     return Stack(
       children: [
         const Center(
-          child: Image(
-            height: 170,
-            image: AssetImage(
-              PImages.nature,
-            ),
+          child: Column(
+            children: [
+              SizedBox(height: PSizes.spaceBtwSections + 8),
+              Image(
+                height: 170,
+                image: AssetImage(
+                  PImages.nature,
+                ),
+              ),
+            ],
           ),
         ),
         Column(

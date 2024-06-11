@@ -24,6 +24,17 @@ class PImages {
   static const String dots = 'assets/images/app_images/dots.png';
   static const String tros = 'assets/images/app_images/tros.png';
   static const String trash = 'assets/images/app_images/trash.png';
+  static const String map = 'assets/images/app_images/map.png';
+  static const String locate = 'assets/images/app_images/locate.png';
+  static const String smTrash = 'assets/images/app_images/sm-trash.png';
+  static const String plasticill = 'assets/images/app_images/plastic-fill.png';
+  static const String plasticPlain =
+      'assets/images/app_images/plastic-plain.png';
+  static const String rewardPlain = 'assets/images/app_images/reward-plain.png';
+  static const String rewardFill = 'assets/images/app_images/reward-fill.png';
+  static const String search = 'assets/images/app_images/search.png';
+  static const String smartphone = 'assets/images/app_images/smartphone.jpg';
+  static const String brown = 'assets/images/app_images/brown.png';
 
   // other images
   static const String successImage =
