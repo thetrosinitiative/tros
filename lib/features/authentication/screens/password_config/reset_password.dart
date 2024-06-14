@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/widgets/emailing/reusable_email.dart';
-import 'package:tros/features/authentication/screens/password_config/change_password.dart';
 import 'package:tros/features/authentication/screens/password_config/verify_reset_code.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';

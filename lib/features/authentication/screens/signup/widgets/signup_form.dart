@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tros/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:tros/features/authentication/screens/signup/verify_email.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/validators/validation.dart';
 

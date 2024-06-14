@@ -10,7 +10,6 @@ import 'package:tros/features/personalization/screens/profile/profile.dart';
 // import 'package:tros/features/shop/screens/wishlist/wishlist.dart';
 // import 'features/shop/screens/home/home.dart';
 import 'package:tros/utils/constants/colors.dart';
-import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -96,7 +95,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomePage(),
-    const ShoppingPage(),
+    const RedeemPage(),
     const MapPage(),
     const ProfilePage()
   ];

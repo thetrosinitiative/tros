@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tros/utils/constants/colors.dart';
 
 class PSectionHeading extends StatelessWidget {
   const PSectionHeading({
@@ -6,7 +7,7 @@ class PSectionHeading extends StatelessWidget {
     this.textColor,
     this.showActionButton = true,
     required this.title,
-    this.buttonTitle = 'View all',
+    this.buttonTitle = 'See all',
     this.onPressed,
   });
   final Color? textColor;
@@ -31,7 +32,14 @@ class PSectionHeading extends StatelessWidget {
         if (showActionButton)
           TextButton(
             onPressed: onPressed,
-            child: Text(buttonTitle),
+            child: Text(
+              buttonTitle,
+              style: const TextStyle(
+                color: PColors.primary,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           )
       ],
     );

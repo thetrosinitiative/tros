@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
 /// a widget for displaying animated loading with optional text and action button

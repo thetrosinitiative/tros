@@ -31,6 +31,7 @@ class PCircularIcon extends StatelessWidget {
     final isDark = PHelperFunctions.isDarkMode(context);
 
     return Container(
+      alignment: Alignment.center,
       width: width,
       height: height,
       decoration: BoxDecoration(
@@ -40,7 +41,8 @@ class PCircularIcon extends StatelessWidget {
                   : PColors.light.withOpacity(0.9)),
           borderRadius: BorderRadius.circular(100)),
       child: IconButton(
-          onPressed: () {},
+          padding: EdgeInsets.zero,
+          onPressed: onPressed,
           icon: Icon(
             icon,
             color: color,

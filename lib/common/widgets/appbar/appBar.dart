@@ -14,13 +14,15 @@ class PAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.showBackArrow = false,
       this.leadingIcon,
       this.actions,
-      this.leadingOnPressed});
+      this.leadingOnPressed,
+      this.bgColor});
 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
+  final Color? bgColor;
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
@@ -29,6 +31,7 @@ class PAppBar extends StatelessWidget implements PreferredSizeWidget {
         horizontal: PSizes.sm,
       ),
       child: AppBar(
+        backgroundColor: bgColor,
         automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(

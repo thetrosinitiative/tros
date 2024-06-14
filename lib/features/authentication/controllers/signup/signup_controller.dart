@@ -2,11 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
-import 'package:tros/features/authentication/models/user_model.dart';
 import 'package:tros/features/authentication/screens/signup/verify_email.dart';
-import 'package:tros/utils/constants/image_strings.dart';
-import 'package:tros/utils/helpers/network_manager.dart';
-import 'package:tros/utils/popups/fullscreen_loader.dart';
 
 import '../../repository/user_repository.dart';
 

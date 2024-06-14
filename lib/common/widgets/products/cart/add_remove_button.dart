@@ -35,7 +35,7 @@ class ProductAddAndRemove extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         PCircularIcon(
-          icon: Iconsax.minus_bold,
+          icon: Iconsax.minus_outline,
           height: height,
           width: width,
           size: PSizes.md,
@@ -54,7 +54,7 @@ class ProductAddAndRemove extends StatelessWidget {
           width: PSizes.spaceBtwItems,
         ),
         PCircularIcon(
-          icon: Iconsax.add_bold,
+          icon: Iconsax.add_outline,
           height: height,
           width: width,
           size: PSizes.md,

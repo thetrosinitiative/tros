@@ -6,7 +6,6 @@ import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:tros/navigation_menu.dart';
 
-import '../../../../utils/constants/image_strings.dart';
 // import '../../../../utils/helpers/network_manager.dart';
 // import '../../../../utils/popups/fullscreen_loader.dart';
 // import '../../../personalization/controllers/user_controller.dart';

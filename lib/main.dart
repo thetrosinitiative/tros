@@ -24,10 +24,10 @@ Future<void> main() async {
   Get.put(AuthenticationRepository());
 
 // Load all the material design / Themes / Localization / Bindings
-  // runApp(DevicePreview(
-  //   builder: (BuildContext context) {
-  //     return const App();
-  //   },
-  // ));
-  runApp(const App());
+  runApp(DevicePreview(
+    builder: (BuildContext context) {
+      return const App();
+    },
+  ));
+  // runApp(const App());
 }

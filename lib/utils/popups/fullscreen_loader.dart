@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/animation_loader.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
-import 'package:tros/utils/helpers/helper_functions.dart';
 
 import '../constants/colors.dart';
 

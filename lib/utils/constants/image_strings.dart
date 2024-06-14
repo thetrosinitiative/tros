@@ -36,6 +36,19 @@ class PImages {
   static const String smartphone = 'assets/images/app_images/smartphone.jpg';
   static const String brown = 'assets/images/app_images/brown.png';
 
+  // REDEEM PAGE IMAGES
+  static const String airtime = 'assets/images/redeem_images/airtime.png';
+  static const String book = 'assets/images/redeem_images/book.png';
+  static const String bottle = 'assets/images/redeem_images/bottle.png';
+  static const String earbud = 'assets/images/redeem_images/earbud.png';
+  static const String fan = 'assets/images/redeem_images/fan.png';
+  static const String headset = 'assets/images/redeem_images/headset.png';
+  static const String mouse = 'assets/images/redeem_images/mouse.png';
+  static const String shirt = 'assets/images/redeem_images/shirt.png';
+  static const String shoe = 'assets/images/redeem_images/shoe.png';
+  static const String star = 'assets/images/redeem_images/star.png';
+  static const String droplet = 'assets/images/redeem_images/droplet.png';
+
   // other images
   static const String successImage =
       'assets/images/animations/sammy-man-and-woman.png';
