@@ -55,6 +55,8 @@ dependencies:
   http: ^1.2.1
   device_preview: ^1.2.0
   loading_animation_widget: ^1.2.1
+  mobile_scanner: ^5.1.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +77,10 @@ flutter:
     - assets/images/logo/
     - assets/images/app_images/
     - assets/images/redeem_images/
+    - assets/images/exchange_images/
+    - assets/lottie/
+
+
 
 # font settings
   fonts:

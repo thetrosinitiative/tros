@@ -58,17 +58,7 @@ class PSignupForm extends StatelessWidget {
           const SizedBox(
             height: PSizes.spaceBtwInputFields,
           ),
-          // Username
-          // TextFormField(
-          //   expands: false,
-          //   decoration: const InputDecoration(
-          //       labelText: PTexts.username,
-          //       prefixIcon: Icon(Iconsax.user_edit_outline)),
-          // ),
-          // const SizedBox(
-          //   height: PSizes.spaceBtwInputFields,
-          // ),
-          // Email
+
           TextFormField(
             controller: controller.email,
             expands: false,

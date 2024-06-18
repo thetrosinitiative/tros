@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:tros/features/main_app/screens/scanner/scanner.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
@@ -37,7 +39,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-            onPressed: () {}, icon: const Icon(Iconsax.scan_barcode_outline)),
+            onPressed: () => Get.to(() => const ScannerPage()),
+            icon: const Icon(Iconsax.scan_barcode_outline)),
         IconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_none_outlined))

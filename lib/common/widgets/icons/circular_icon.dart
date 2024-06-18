@@ -19,12 +19,14 @@ class PCircularIcon extends StatelessWidget {
     this.height,
     this.onPressed,
     this.size = PSizes.lg,
+    this.boxShadow,
   });
 
   final IconData icon;
   final Color? color, backgroundColor;
   final double? width, height, size;
   final VoidCallback? onPressed;
+  final List<BoxShadow>? boxShadow;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class PCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
+          boxShadow: boxShadow,
           color: backgroundColor ??
               (isDark
                   ? PColors.dark.withOpacity(0.9)

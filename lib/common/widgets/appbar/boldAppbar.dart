@@ -8,30 +8,34 @@ class BoldAppbar extends StatelessWidget implements PreferredSizeWidget {
     this.implyLeading = false,
     this.onPressed,
     required this.text,
+    this.iconData = Icons.gpp_maybe_outlined,
+    this.useScaffoldBgColor = false,
   });
 
   final bool implyLeading;
   final Function()? onPressed;
   final String text;
+  final IconData? iconData;
+  final bool useScaffoldBgColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: implyLeading,
-      backgroundColor: PColors.white,
+      backgroundColor: useScaffoldBgColor ? null : PColors.white,
       title: Text(
         text,
         style: Theme.of(context).textTheme.displaySmall!.apply(
-              color: PColors.primary,
-              fontWeightDelta: 3,
-              fontSizeDelta: -2,
-            ),
+            color: PColors.primary,
+            fontWeightDelta: 3,
+            fontSizeDelta: -2,
+            letterSpacingDelta: 2),
       ),
       actions: [
         IconButton(
             onPressed: onPressed,
-            icon: const Icon(
-              Icons.gpp_maybe_outlined,
+            icon: Icon(
+              iconData,
               size: 28,
               color: PColors.primary,
             ))

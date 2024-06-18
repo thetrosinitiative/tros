@@ -19,7 +19,7 @@ class PSocialButton extends StatelessWidget {
         const Center(
           child: Column(
             children: [
-              SizedBox(height: PSizes.spaceBtwSections + 8),
+              SizedBox(height: PSizes.spaceBtwSections),
               Image(
                 height: 170,
                 image: AssetImage(
@@ -62,33 +62,6 @@ class PSocialButton extends StatelessWidget {
             const SizedBox(
               height: PSizes.spaceBtwItems,
             ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            //   child: ElevatedButton(
-            //     style: ElevatedButton.styleFrom(
-            //         backgroundColor: isDark ? PColors.primary : PColors.white,
-            //         elevation: 2),
-            //     onPressed: () {},
-            //     child: Row(
-            //       mainAxisSize: MainAxisSize.max,
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         const Image(
-            //           image: AssetImage(PImages.github),
-            //           height: PSizes.iconMd,
-            //         ),
-            //         const SizedBox(
-            //           width: PSizes.spaceBtwItems,
-            //         ),
-            //         Text(
-            //           'Continue with Github',
-            //           style: TextStyle(
-            //               color: !isDark ? PColors.dark : PColors.white),
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ],

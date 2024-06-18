@@ -15,9 +15,6 @@ class PLoginHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: PSizes.spaceBtwItems / 2,
-        ),
         Center(
           child: Text(
             PTexts.loginTitle,

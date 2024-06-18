@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tros/common/builders/gridviewbuilder.dart';
 import 'package:tros/common/widgets/appbar/boldAppbar.dart';
+import 'package:tros/common/widgets/buttons/bottom_elevated_button.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
@@ -152,17 +153,8 @@ class RedeemDetail extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100))),
-            onPressed: () {},
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text('Add to cart'),
-            )),
+      bottomNavigationBar: const BottomElevatedButton(
+        text: 'Add to cart',
       ),
     );
   }

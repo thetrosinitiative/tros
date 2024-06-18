@@ -22,7 +22,7 @@ class ProfileListDividerSeperated extends StatelessWidget {
           return ListTile(
             onTap: () {},
             focusColor: PColors.grey,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             leading: accountTiles.getIcon(index),
             title: Text(accountTiles.getTitle(index),
                 style: const TextStyle(

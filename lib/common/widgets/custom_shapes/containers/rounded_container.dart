@@ -15,6 +15,8 @@ class TRoundedContainer extends StatelessWidget {
     this.margin,
     this.padding,
     this.showBorder = false,
+    this.gradient,
+    this.shadow,
   });
   final double? width, height;
   final double radius;
@@ -22,6 +24,8 @@ class TRoundedContainer extends StatelessWidget {
   final Widget? child;
   final EdgeInsetsGeometry? margin, padding;
   final bool showBorder;
+  final Gradient? gradient;
+  final List<BoxShadow>? shadow;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +35,11 @@ class TRoundedContainer extends StatelessWidget {
       padding: padding,
       margin: margin,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius),
-        color: backgroundColor,
-        border: showBorder ? Border.all(color: borderColor) : null,
-      ),
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(radius),
+          color: backgroundColor,
+          border: showBorder ? Border.all(color: borderColor) : null,
+          boxShadow: shadow),
       child: child,
     );
   }

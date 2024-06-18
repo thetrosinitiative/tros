@@ -28,7 +28,7 @@ class PTermsAndConditions extends StatelessWidget {
                   !controller.privacyPolicy.value)),
         ),
         const SizedBox(
-          width: PSizes.spaceBtwItems,
+          width: PSizes.spaceBtwItems / 2,
         ),
         Text.rich(
           TextSpan(
@@ -43,11 +43,13 @@ class PTermsAndConditions extends StatelessWidget {
                       decorationColor: isDark ? PColors.white : PColors.primary,
                       decoration: TextDecoration.underline)),
               TextSpan(
-                  text: '${PTexts.and} ',
-                  style: Theme.of(context).textTheme.bodySmall),
+                text: '${PTexts.and} ',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               TextSpan(
                   text: '${PTexts.termsOfUse} ',
                   style: Theme.of(context).textTheme.labelLarge!.apply(
+                      overflow: TextOverflow.ellipsis,
                       color: isDark ? PColors.white : PColors.primary,
                       decorationColor: isDark ? PColors.white : PColors.primary,
                       decoration: TextDecoration.underline)),

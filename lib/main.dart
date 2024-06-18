@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:tros/app.dart';
-import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
+import 'app.dart';
+import 'data/repositories/authentication_repository/authentication_repository.dart';
 
 Future<void> main() async {
   //   Add Widgets Binding
@@ -24,10 +24,10 @@ Future<void> main() async {
   Get.put(AuthenticationRepository());
 
 // Load all the material design / Themes / Localization / Bindings
-  runApp(DevicePreview(
-    builder: (BuildContext context) {
-      return const App();
-    },
-  ));
-  // runApp(const App());
+  // runApp(DevicePreview(
+  //   builder: (BuildContext context) {
+  //     return const App();
+  //   },
+  // ));
+  runApp(const App());
 }

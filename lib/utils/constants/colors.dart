@@ -16,6 +16,11 @@ class PColors {
         Color(0xfffad0c4),
         Color(0xfffad0c4),
       ]);
+// #6CC51D
+  static const buttonGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: AlignmentDirectional.bottomCenter,
+      colors: [Color(0xff6CC51D), Color(0xff28B446)]);
 
   // Text Colors
   static const Color textPrimary = Color(0xff333333);
@@ -45,6 +50,7 @@ class PColors {
   static const Color error = Color(0xffd32f2f);
   static const Color success = Color(0xff388e3c);
   static const Color warning = Color(0xfff57c00);
+  static const Color warning2 = Color(0xffff7800);
   static const Color info = Color(0xff1976d2);
 
 //   natural shades

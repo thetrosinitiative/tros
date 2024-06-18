@@ -33,8 +33,8 @@ class ProfilePage extends StatelessWidget {
                 'Oke Daniel',
                 style: Theme.of(context)
                     .textTheme
-                    .titleLarge!
-                    .apply(fontSizeDelta: 4, fontWeightDelta: 4),
+                    .titleMedium!
+                    .apply(fontSizeDelta: -2, fontWeightDelta: 1),
               ),
               const SizedBox(
                 height: PSizes.spaceBtwItems / 2,
@@ -54,8 +54,8 @@ class ProfilePage extends StatelessWidget {
                     borderColor: PColors.primary,
                     backgroundColor: PColors.containerGrey,
                     padding: const EdgeInsets.all(8),
-                    width: 168,
-                    height: 97,
+                    width: 160,
+                    height: 90,
                     showBorder: true,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,9 +64,9 @@ class ProfilePage extends StatelessWidget {
                         const Text('Your plan'),
                         Text(
                           'Plastic Recycling journey',
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.titleMedium!.apply(
                                 fontSizeDelta: -3,
-                                fontWeightDelta: 5,
                               ),
                         )
                       ],
@@ -76,8 +76,8 @@ class ProfilePage extends StatelessWidget {
                     borderColor: PColors.primary,
                     backgroundColor: PColors.containerGrey,
                     padding: const EdgeInsets.all(8),
-                    width: 168,
-                    height: 97,
+                    width: 160,
+                    height: 90,
                     showBorder: true,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,9 +88,9 @@ class ProfilePage extends StatelessWidget {
                         ),
                         Text(
                           'Invite Friends',
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.titleMedium!.apply(
                                 fontSizeDelta: -2,
-                                fontWeightDelta: 5,
                               ),
                         )
                       ],
