@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
     return const Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: PSpacingStyle.carouselPadding,
+          padding: PSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             children: [
               // Logo, Title, Subtitle,

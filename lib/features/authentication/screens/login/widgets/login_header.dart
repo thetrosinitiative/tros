@@ -29,7 +29,7 @@ class PLoginHeader extends StatelessWidget {
         ),
         const Center(
           child: Image(
-            height: 170,
+            height: 150,
             image: AssetImage(
               PImages.login,
             ),

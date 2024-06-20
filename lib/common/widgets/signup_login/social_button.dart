@@ -21,7 +21,7 @@ class PSocialButton extends StatelessWidget {
             children: [
               SizedBox(height: PSizes.spaceBtwSections),
               Image(
-                height: 170,
+                height: 150,
                 image: AssetImage(
                   PImages.nature,
                 ),

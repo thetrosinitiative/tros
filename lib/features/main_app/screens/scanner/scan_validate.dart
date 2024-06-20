@@ -156,80 +156,76 @@ class ScanValidateScreen extends StatelessWidget {
           height: 120,
           width: 300,
           radius: 5,
-          child: Expanded(
-            child: Row(
-              children: [
-                const PRoundedImage(
-                  padding: EdgeInsetsDirectional.zero,
-                  imageUrl: PImages.earth,
-                  width: 90,
-                  height: 90,
-                  borderRadius: 5,
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: PSizes.xs,
-                        ),
-                        const Flexible(
-                          child: Text('International'),
-                        ),
-                        const SizedBox(
-                          height: PSizes.xs,
-                        ),
-                        Text(
-                            'Humanity healed the ozone hole. Can we do the same in subswequent time.',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.apply()),
-                        Row(
-                          children: [
-                            const PCircularImage(
-                              imageUrl: PImages.appLogo,
-                              width: 35,
-                              height: 35,
-                            ),
-                            Expanded(
-                              child: Text('USA Today',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .apply(
-                                          fontWeightDelta: 2,
-                                          fontSizeDelta: -1)),
-                            ),
-                            const Row(
-                              children: [
-                                Icon(
-                                  Icons.timer_outlined,
-                                  size: 17,
-                                ),
-                                SizedBox(
-                                  width: PSizes.xs,
-                                ),
-                                Text(
-                                  '7 October 2023',
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w500),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+          child: Row(
+            children: [
+              const PRoundedImage(
+                padding: EdgeInsetsDirectional.zero,
+                imageUrl: PImages.earth,
+                width: 90,
+                height: 90,
+                borderRadius: 5,
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: PSizes.xs,
+                      ),
+                      const Flexible(
+                        child: Text('International'),
+                      ),
+                      const SizedBox(
+                        height: PSizes.xs,
+                      ),
+                      Text(
+                          'Humanity healed the ozone hole. Can we do the same in subswequent time.',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.apply()),
+                      Row(
+                        children: [
+                          const PCircularImage(
+                            imageUrl: PImages.appLogo,
+                            width: 35,
+                            height: 35,
+                          ),
+                          Expanded(
+                            child: Text('USA Today',
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .apply(
+                                        fontWeightDelta: 2, fontSizeDelta: -1)),
+                          ),
+                          const Row(
+                            children: [
+                              Icon(
+                                Icons.timer_outlined,
+                                size: 17,
+                              ),
+                              SizedBox(
+                                width: PSizes.xs,
+                              ),
+                              Text(
+                                '7 October 2023',
+                                style: TextStyle(
+                                    fontSize: 11, fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
       ),

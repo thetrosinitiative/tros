@@ -10,9 +10,6 @@ import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
 
-import '../../../../common/widgets/buttons/gradient_button.dart';
-import '../../../../utils/helpers/helper_functions.dart';
-
 class ScannerPage extends StatelessWidget {
   const ScannerPage({super.key});
 
@@ -27,7 +24,6 @@ class ScannerPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 const SizedBox(height: PSizes.appBarHeight * 2),
-
                 Text(
                   'Scan recycling code',
                   style: Theme.of(context).textTheme.headlineMedium!.apply(
@@ -36,7 +32,6 @@ class ScannerPage extends StatelessWidget {
                       color: PColors.primary),
                 ),
                 const SizedBox(height: PSizes.appBarHeight * 2),
-
                 Column(
                   children: [
                     const TRoundedContainer(
@@ -53,10 +48,6 @@ class ScannerPage extends StatelessWidget {
                             color: PColors.primary)),
                   ],
                 ),
-                // GradientButton(
-                //   text: 'Scan',
-                //   onPressed: () => Get.to(() => const ScanValidateScreen()),
-                // ),
               ],
             ),
           ),
@@ -72,20 +63,48 @@ class QRScanner extends StatefulWidget {
 }
 
 class _QRScannerState extends State<QRScanner> {
+  late MobileScannerController _controller;
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (!_controller.value.isInitialized) {
+  //     return;
+  //   }
+  //   switch (state) {
+  //     case AppLifecycleState.resumed:
+  //       _controller.start();
+  //     case AppLifecycleState.paused:
+  //     case AppLifecycleState.detached:
+  //     case AppLifecycleState.hidden:
+  //       return;
+  //     case AppLifecycleState.inactive:
+  //       _controller.stop();
+  //   }
+  //   super.didChangeAppLifecycleState(state);
+  // }
+
+  @override
+  void initState() {
+    // WidgetsBinding.instance.addObserver(this);
+    _controller = MobileScannerController(
+      detectionSpeed: DetectionSpeed.noDuplicates,
+      returnImage: true,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isDark = PHelperFunctions.isDarkMode(context);
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: !isDark ? PColors.dark : PColors.dark,
-      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-      systemStatusBarContrastEnforced: true,
-    ));
     return MobileScanner(
-      controller: MobileScannerController(
-        detectionSpeed: DetectionSpeed.noDuplicates,
-        returnImage: true,
-      ),
+      fit: BoxFit.cover,
+      // overlayBuilder: (_, __) => const TRoundedContainer(
+      //   backgroundColor: PColors.transparent,
+      //   radius: 50,
+      //   width: 300,
+      //   height: 300,
+      // ),
+      // scanWindow: Rect.,
+      controller: _controller,
       onDetect: (capture) {
         debugPrint(capture.barcodes.toString());
         final List<Barcode> barcodes = capture.barcodes;
@@ -107,5 +126,12 @@ class _QRScannerState extends State<QRScanner> {
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    // WidgetsBinding.instance.removeObserver(this);
+    _controller.dispose();
+    super.dispose();
   }
 }

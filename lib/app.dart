@@ -15,16 +15,16 @@ class App extends StatelessWidget {
     final isDark = PHelperFunctions.isDarkMode(context);
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: !isDark ? PColors.white : PColors.dark,
+      statusBarColor: !isDark ? PColors.transparent : PColors.dark,
       statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
       systemStatusBarContrastEnforced: true,
     ));
-    return SafeArea(
-      child: GetMaterialApp(
-        themeMode: ThemeMode.system,
-        theme: TAppTheme.lightTheme,
-        darkTheme: TAppTheme.darkTheme,
-        home: const Scaffold(
+    return GetMaterialApp(
+      themeMode: ThemeMode.system,
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
+      home: const SafeArea(
+        child: Scaffold(
           backgroundColor: PColors.primary,
           body: Center(
             child: CircularProgressIndicator(
@@ -32,8 +32,8 @@ class App extends StatelessWidget {
             ),
           ),
         ),
-        debugShowCheckedModeBanner: false,
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
