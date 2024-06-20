@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/common/builders/listdividerseperated.dart';
+import 'package:tros/common/styles/spacing_styles.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:tros/features/personalization/controllers/listTileController.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: PSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

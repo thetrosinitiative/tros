@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:tros/features/main_app/screens/redeem/redeem_detail/widgets/redeem_detail.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
 class GridViewBuilder extends StatelessWidget {

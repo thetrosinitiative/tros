@@ -3,17 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
-import 'package:tros/navigation_menu.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
-import 'package:tros/utils/theme/custom_themes/outlined_button_theme.dart';
 
 import '../../../../common/widgets/images/circular_images.dart';
 import 'transaction_details.dart';

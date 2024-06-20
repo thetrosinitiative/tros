@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:tros/features/main_app/screens/scanner/scan_success.dart';
-import 'package:tros/features/main_app/screens/scanner/scan_validate.dart';
 import 'package:tros/features/main_app/screens/scanner/scanner.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
