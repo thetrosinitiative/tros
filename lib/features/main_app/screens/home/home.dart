@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tros/features/authentication/controllers/login_controller.dart';
+import 'package:tros/features/authentication/controllers/login/login_controller.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_appbar.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_blog.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_info_card.dart';

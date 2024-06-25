@@ -31,13 +31,14 @@ class ResetPasswordScreen extends StatelessWidget {
               // TITLE AND AND SUBTITLE
               // BUTTONS
               ReusableEmailWidget(
-                  image: PImages.emailDeliveredImage,
-                  title: PTexts.changePasswordTitle,
-                  subtitle: PTexts.changePasswordSubtitle,
-                  elevatedaBtnText: PTexts.done,
-                  textBtnText: PTexts.resendEmail,
-                  eOnpressed: () => Get.off(const VerifyResetCodeScreen()),
-                  tOnpressed: () {})
+                image: PImages.emailDeliveredImage,
+                title: PTexts.changePasswordTitle,
+                subtitle: PTexts.changePasswordSubtitle,
+                elevatedaBtnText: PTexts.done,
+                textBtnText: PTexts.resendEmail,
+                doneOnpressed: () {},
+                resendeOnpressed: () => Get.off(const VerifyResetCodeScreen()),
+              )
             ],
           ),
         ),

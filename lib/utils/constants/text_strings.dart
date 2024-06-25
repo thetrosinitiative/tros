@@ -74,5 +74,5 @@ class PTexts {
       "You will be logged out of all active TROS sessions after your password is changed";
   static const String resetCodeTitle = "We sent you a code";
   static const String resetCodeSubtitle =
-      "Check your email to get your confirmation code. if you need to request a new code, goback and reselect a confirmation.";
+      "Check your email to get your reset code. if you need to request a new code, go back and reselect confirmation.";
 }

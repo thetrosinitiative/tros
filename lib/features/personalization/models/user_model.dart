@@ -12,6 +12,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String? profilePicture;
+  bool emailVerified;
   // List addresses;
   UserModel({
     required this.id,
@@ -21,7 +22,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     this.profilePicture,
-    // required this.addresses,
+    required this.emailVerified,
   });
 
   UserModel copyWith({
@@ -32,7 +33,7 @@ class UserModel {
     String? email,
     String? phoneNumber,
     String? profilePicture,
-    // List? addresses,
+    bool? emailVerified,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -42,7 +43,7 @@ class UserModel {
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       profilePicture: profilePicture ?? this.profilePicture,
-      // addresses: addresses ?? this.addresses,
+      emailVerified: emailVerified ?? this.emailVerified,
     );
   }
 
@@ -52,11 +53,15 @@ class UserModel {
     result.addAll({'id': id});
     result.addAll({'firstName': firstName});
     result.addAll({'lastName': lastName});
-    // result.addAll({'username': username});
+    if (username != null) {
+      result.addAll({'username': username});
+    }
     result.addAll({'email': email});
     result.addAll({'phoneNumber': phoneNumber});
-    // result.addAll({'profilePicture': profilePicture});
-    // result.addAll({'addresses': addresses});
+    if (profilePicture != null) {
+      result.addAll({'profilePicture': profilePicture});
+    }
+    result.addAll({'emailVerified': emailVerified});
 
     return result;
   }
@@ -66,11 +71,11 @@ class UserModel {
       id: map['id'] ?? '',
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
-      // username: map['username'] ?? '',
+      username: map['username'],
       email: map['email'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',
-      // profilePicture: map['profilePicture'] ?? '',
-      // addresses: map['addresses'] ?? [],
+      profilePicture: map['profilePicture'],
+      emailVerified: map['emailVerified'] ?? false,
     );
   }
 
@@ -86,7 +91,7 @@ class UserModel {
         username: '',
         email: '',
         phoneNumber: '',
-        profilePicture: '',
+        profilePicture: '', emailVerified: false,
         // addresses: [],
       );
 
@@ -136,6 +141,33 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phoneNumber: $phoneNumber, profilePicture: $profilePicture)';
+    return 'UserModel(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phoneNumber: $phoneNumber, profilePicture: $profilePicture, emailVerified: $emailVerified)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is UserModel &&
+        other.id == id &&
+        other.firstName == firstName &&
+        other.lastName == lastName &&
+        other.username == username &&
+        other.email == email &&
+        other.phoneNumber == phoneNumber &&
+        other.profilePicture == profilePicture &&
+        other.emailVerified == emailVerified;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        firstName.hashCode ^
+        lastName.hashCode ^
+        username.hashCode ^
+        email.hashCode ^
+        phoneNumber.hashCode ^
+        profilePicture.hashCode ^
+        emailVerified.hashCode;
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tros/utils/constants/colors.dart';
-import 'package:tros/utils/constants/image_strings.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -13,11 +11,13 @@ class ReusableEmailWidget extends StatelessWidget {
     required this.subtitle,
     required this.elevatedaBtnText,
     required this.textBtnText,
-    required this.eOnpressed,
-    required this.tOnpressed,
+    required this.doneOnpressed,
+    required this.resendeOnpressed,
+    this.email = '',
   });
   final String image, title, subtitle, elevatedaBtnText, textBtnText;
-  final VoidCallback eOnpressed, tOnpressed;
+  final String email;
+  final VoidCallback doneOnpressed, resendeOnpressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ReusableEmailWidget extends StatelessWidget {
       children: [
         // IMAGE
         Image(
-          image: const AssetImage(PImages.appLogo),
+          image: AssetImage(image),
           width: PHelperFunctions.screenWidth() * 0.6,
         ),
         const SizedBox(
@@ -34,17 +34,14 @@ class ReusableEmailWidget extends StatelessWidget {
         // TITLE
         Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .headlineMedium!
-              .apply(color: PColors.primary),
+          style: Theme.of(context).textTheme.headlineMedium,
           textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: PSizes.spaceBtwItems,
         ),
         Text(
-          'diweesomchi@gmail.com',
+          email,
           style: Theme.of(context).textTheme.labelLarge,
           textAlign: TextAlign.center,
         ),
@@ -63,7 +60,7 @@ class ReusableEmailWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: eOnpressed,
+            onPressed: doneOnpressed,
             child: Text(elevatedaBtnText),
           ),
         ),
@@ -73,19 +70,8 @@ class ReusableEmailWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: TextButton(
-            onPressed: tOnpressed,
+            onPressed: resendeOnpressed,
             child: Text(textBtnText),
-          ),
-        ),
-        const SizedBox(
-          height: 250,
-          child: Center(
-            child: Image(
-              height: 170,
-              image: AssetImage(
-                PImages.security,
-              ),
-            ),
           ),
         ),
       ],

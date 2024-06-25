@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tros/common/widgets/success_screen/success_screen1.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/constants/text_strings.dart';
 
 import '../../../../common/widgets/emailing/reusable_email.dart';
+import '../../controllers/signup/email_verification_controller.dart';
 import '../login/login.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
@@ -15,6 +15,7 @@ class VerifyEmailScreen extends StatelessWidget {
   final String email;
   @override
   Widget build(BuildContext context) {
+    final emailController = Get.put(EmailVerificationController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -28,20 +29,15 @@ class VerifyEmailScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(PSizes.defaultSpace),
           child: ReusableEmailWidget(
-              image: PImages.emailDeliveredImage,
-              title: PTexts.confirmEmail,
-              subtitle: PTexts.confirmEmailSubtitle,
-              elevatedaBtnText: PTexts.acontinue,
-              textBtnText: PTexts.resendEmail,
-              eOnpressed: () => Get.to(
-                    () => SuccessScreen1(
-                      image: PImages.success,
-                      title: PTexts.accountCreatedTitle,
-                      subtitle: PTexts.accountCreatedSubtitle,
-                      onPressed: () => Get.offAll(() => const LoginScreen()),
-                    ),
-                  ),
-              tOnpressed: () {}),
+            image: PImages.emailDeliveredImage,
+            title: PTexts.confirmEmail,
+            subtitle: PTexts.confirmEmailSubtitle,
+            elevatedaBtnText: PTexts.acontinue,
+            textBtnText: PTexts.resendEmail,
+            doneOnpressed: () =>
+                Get.to(() => emailController.checkEmailVerificationStatus()),
+            resendeOnpressed: () => emailController.verifyUserEmail(),
+          ),
         ),
       ),
     );

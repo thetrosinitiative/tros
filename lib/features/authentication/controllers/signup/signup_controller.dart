@@ -4,8 +4,6 @@ import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:tros/features/authentication/screens/signup/verify_email.dart';
 
-import '../../repository/user_repository.dart';
-
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
@@ -19,7 +17,7 @@ class SignupController extends GetxController {
   final password = TextEditingController(); //password controller
   final phoneNumber = TextEditingController(); //phoneNumber controller
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
-  final userRepository = Get.put(UserRepository());
+  // final userRepository = Get.put(UserRepository());
   final isLoading = false.obs;
   //USER REPOSITORY
 
@@ -53,15 +51,6 @@ class SignupController extends GetxController {
 
         return;
       }
-
-      // SAVE AUTHENTICATED USER DATA IN THE FIREBASE FIRESTORE
-      // final newUser = UserModel(
-      //   id: '',
-      //   firstName: firstName.text.trim(),
-      //   lastName: lastName.text.trim(),
-      //   email: email.text.trim(),
-      //   phoneNumber: phoneNumber.text.trim(),
-      // );
       final userInfo = <String, String>{
         'firstName': firstName.text.trim(),
         'lastName': lastName.text.trim(),
@@ -72,10 +61,7 @@ class SignupController extends GetxController {
       // REGISTER USER
       final userCredential =
           await AuthenticationRepository.instance.signUp(userInfo);
-      debugPrint(userCredential);
-      // await userRepository.saveUser(newUser);
-      // remove loader
-      // PFullScreenLoader.stopLoading();
+      debugPrint(userCredential.toString());
       isLoading.value = false;
 
       // SHOW SUCCES MESSAGE

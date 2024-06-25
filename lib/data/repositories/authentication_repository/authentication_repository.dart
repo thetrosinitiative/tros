@@ -37,23 +37,28 @@ class AuthenticationRepository extends GetxController {
   //  ------------------------------- Email and Password signin --------------------------
 
   // SIGNUP USER
-  Future<String> signUp(Map<String, String> user) async {
+  Future<Map<String, dynamic>> signUp(Map<String, String> user) async {
     try {
-      final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1', 'auth/signup', user);
-      return result.toString();
-    } on AuthException catch (e) {
+      Map<String, dynamic> result = await THttpHelper.post(
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/signup',
+          data: user);
+      debugPrint(result.toString());
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
   // LOGIN WITH EMAIL AND PASSWORD
-  Future<String> signin(Map<String, String> user) async {
+  Future<Map<String, dynamic>> signin(Map<String, String> user) async {
     try {
-      final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1', 'auth/login', user);
-      return result.toString();
-    } on AuthException catch (e) {
+      Map<String, dynamic> result = await THttpHelper.post(
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/login',
+          data: user);
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
@@ -62,73 +67,76 @@ class AuthenticationRepository extends GetxController {
   // REGISTER EMAIL AUTHENTICATION
   // REAUTHENTICATION
   // EMAIL VERIFICATION
-  Future<String> verifyEmail(Map<String, String> email) async {
+  Future<Map<String, dynamic>> verifyEmail(Map<String, String> email) async {
     try {
       final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1', 'auth/email/verify', email);
-      return result.toString();
-    } on AuthException catch (e) {
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/email/verify',
+          data: email);
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
 // VERIFY WITH PHONE NUMBER
-  Future<String> verifyPhone(Map<String, String> phone) async {
+  Future<Map<String, dynamic>> verifyPhone(Map<String, String> phone) async {
     try {
       final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1', 'auth/phone/verify', phone);
-      return result.toString();
-    } on AuthException catch (e) {
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/phone/verify',
+          data: phone);
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
   // VERIFY PHONE NUMBER CODE
-  Future<String> verifyPhoneNumberCode(Map<String, String> code) async {
+  Future<Map<String, dynamic>> verifyPhoneNumberCode(
+      Map<String, String> code) async {
     try {
       final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1',
-          'auth/phone/verifyCode',
-          code);
-      return result.toString();
-    } on AuthException catch (e) {
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/phone/verifyCode',
+          data: code);
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
   // FORGET PASSWORD
-  Future<String> forgotPassword(Map<String, String> details) async {
+  Future<void> forgotPassword(Map<String, String> details) async {
     try {
-      final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1',
-          'auth/password/forgot',
-          details);
-      return result.toString();
-    } on AuthException catch (e) {
+      await THttpHelper.post(
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/password/forgot',
+          data: details);
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
 // VERIFY PASSWORD RESET CODE
-  Future<String> verifyPasswordResetLink(Map<String, String> code) async {
+  Future<Map<String, dynamic>> verifyPasswordResetLink(
+      Map<String, String> code) async {
     try {
       final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1',
-          'auth/password/verifyCode',
-          code);
-      return result.toString();
-    } on AuthException catch (e) {
+          baseUrl: 'https://tros-api.onrender.com/api/v1',
+          endpoint: 'auth/password/verifyCode',
+          data: code);
+      return result;
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }
 
   // RESET TO NEW PASSWORD
-  Future<String> resetPassword(Map<String, String> password) async {
+  Future<void> resetPassword(Map<String, String> password, String url) async {
     try {
-      final result = await THttpHelper.post(
-          'https://tros-api.onrender.com/api/v1', 'auth/signup', password);
-      return result.toString();
-    } on AuthException catch (e) {
+      await THttpHelper.patch(baseUrl: url, data: password);
+    } on CustomException catch (e) {
       throw e.toString();
     }
   }

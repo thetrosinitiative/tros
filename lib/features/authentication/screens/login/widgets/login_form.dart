@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:tros/features/authentication/controllers/login_controller.dart';
+import 'package:tros/features/authentication/controllers/login/login_controller.dart';
 import 'package:tros/features/authentication/screens/password_config/forget_password.dart';
 import 'package:tros/features/authentication/screens/signup/signup.dart';
-import 'package:tros/navigation_menu.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/validators/validation.dart';
 

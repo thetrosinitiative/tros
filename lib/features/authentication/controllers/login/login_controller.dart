@@ -6,6 +6,8 @@ import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
 import 'package:tros/navigation_menu.dart';
 
+import '../../../personalization/controllers/userController.dart';
+
 // import '../../../../utils/helpers/network_manager.dart';
 // import '../../../../utils/popups/fullscreen_loader.dart';
 // import '../../../personalization/controllers/user_controller.dart';
@@ -21,7 +23,7 @@ class LoginController extends GetxController {
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final isLoading = false.obs;
 
-  // final userController = Get.put(UserController());
+  final userController = Get.put(UserController());
 
   @override
   void onInit() async {
@@ -57,45 +59,23 @@ class LoginController extends GetxController {
         'email': email.text.trim(),
       };
       // LOGIN USER
-      await AuthenticationRepository.instance.signin(details);
-
+      final user = await AuthenticationRepository.instance.signin(details);
+      debugPrint(user.toString());
       // REMOVE LOADER
       isLoading.value = false;
+      // GET UER DETAIL
+      // await userController.getUser(user['userId']);
+
       // REDIRECT TO HOME
       Get.to(() => const NavigationMenu());
       // AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       isLoading.value = false;
+      debugPrint(e.toString());
       PLoaders.errorSnackBar(title: "Ooops!", message: e.toString());
       return;
     }
   }
 
-  Future<void> signInWithGoogle() async {
-    // try {
-    // // START LOADING
-    // PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.loading);
-    // // CHECK INTERNET CONNECTIVITY
-    // final isConnected = await NetworkManager.instance.isConnected();
-    // if (!isConnected) {
-    //   PFullScreenLoader.stopLoading();
-    //   return;
-    //   }
-
-    //   final userCredentials =
-    //       await AuthenticationRepository.instance.signInWithGoogle();
-    //   debugPrint(userCredentials.toString());
-    //   await userController.saveUserRecord(userCredentials);
-    //   // remove loader
-    //   PFullScreenLoader.stopLoading();
-
-    //   // SHOW SUCCES MESSAGE
-    //   PLoaders.successSnackBar(title: 'Welcome back!');
-    //   // MOVE TO VERIFY HOME SCREEN
-    //   AuthenticationRepository.instance.screenRedirect();
-    // } catch (e) {
-    //   PFullScreenLoader.stopLoading();
-    //   PLoaders.errorSnackBar(title: "Ooops!", message: e.toString());
-    // }
-  }
+  Future<void> forgottenPassword() async {}
 }

@@ -48,13 +48,13 @@ class ProfilePage extends StatelessWidget {
               ),
               // INFO CARD
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TRoundedContainer(
                     borderColor: PColors.primary,
                     backgroundColor: PColors.containerGrey,
                     padding: const EdgeInsets.all(8),
-                    width: 160,
+                    width: 150,
                     height: 90,
                     showBorder: true,
                     child: Column(
@@ -76,7 +76,7 @@ class ProfilePage extends StatelessWidget {
                     borderColor: PColors.primary,
                     backgroundColor: PColors.containerGrey,
                     padding: const EdgeInsets.all(8),
-                    width: 160,
+                    width: 150,
                     height: 90,
                     showBorder: true,
                     child: Column(
@@ -99,7 +99,7 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: PSizes.spaceBtwSections,
+                height: PSizes.spaceBtwInputFields / 2,
               ),
               const ProfileListDividerSeperated()
             ],
