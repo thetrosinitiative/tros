@@ -53,7 +53,7 @@ class PLoaders {
         isDismissible: true,
         shouldIconPulse: true,
         colorText: PColors.white,
-        backgroundColor: PColors.info,
+        backgroundColor: PColors.primary,
         snackPosition: SnackPosition.TOP,
         duration: Duration(seconds: duration),
         margin: const EdgeInsets.all(10),

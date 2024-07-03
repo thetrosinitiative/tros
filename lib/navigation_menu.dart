@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:tros/features/main_app/screens/exchange/exchange.dart';
 import 'package:tros/features/main_app/screens/home/home.dart';
 import 'package:tros/features/main_app/screens/map/map.dart';
 import 'package:tros/features/main_app/screens/redeem/redeem.dart';
@@ -96,13 +97,13 @@ class NavigationController extends GetxController {
   final screens = [
     const HomePage(),
     const RedeemPage(),
-    const MapPage(),
+    const ExchangePage(),
     const ProfilePage()
   ];
   final List<IconData> listOfIcons = [
     Icons.home_rounded,
     Iconsax.shop_outline,
-    Iconsax.location_outline,
+    Iconsax.gift_bold,
     Icons.person_rounded,
   ];
 }

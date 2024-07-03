@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:tros/utils/exceptions/auth_esception.dart';
 import 'package:http/http.dart' as http;
@@ -112,9 +112,26 @@ import 'package:http/http.dart' as http;
 
 class THttpHelper {
   // helper method to make get request
-  static Future<Map<String, dynamic>> get(
-      String endpoint, String baseUrl) async {
-    final response = await http.get(Uri.parse('$baseUrl/$endpoint'));
+  static Future<Map<String, dynamic>> get(String? endpoint, String baseUrl,
+      {String? accessToken}) async {
+    debugPrint(endpoint);
+    debugPrint(accessToken);
+
+    final response = (endpoint == null || endpoint.isEmpty)
+        ? accessToken != null
+            ? await http.get(Uri.parse(baseUrl),
+                headers: {'Authorization': 'Bearer $accessToken!'})
+            : await http.get(
+                Uri.parse(baseUrl),
+              )
+        : accessToken != null
+            ? await http.get(Uri.parse('$baseUrl/$endpoint'),
+                headers: {'Authorization': 'Bearer $accessToken!'})
+            : await http.get(
+                Uri.parse('$baseUrl/$endpoint'),
+              );
+    // debugPrint(response.toString());
+
     return _handleResponse(response);
   }
 
@@ -172,16 +189,16 @@ class THttpHelper {
     debugPrint(response.statusCode.toString());
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      if (response.body.runtimeType == String) {
-        return {'body': response.body};
-      } else {
-        final body = jsonDecode(response.body);
-        // debugPrint(body['userId']);
+      // if (response.body.runtimeType == String) {
+      //   return {'body': jsonDecode(response.body)};
+      // } else {
+      final body = jsonDecode(response.body);
 
-        return body;
-      }
+      return body;
+      // }
     } else {
       final body = jsonDecode(response.body);
+      debugPrint(body.toString());
       throw CustomException(
           code: response.statusCode, message: body['message']);
     }

@@ -61,10 +61,8 @@ class PImages {
   static const String donate = 'assets/images/exchange_images/donate.png';
 
   // other images
-  static const String successImage =
-      'assets/images/animations/sammy-man-and-woman.png';
-  static const String emailDeliveredImage =
-      'assets/images/animations/sammy-man-email.png';
+  static const String successImage = 'assets/lottie/success2.json';
+  static const String emailDeliveredImage = 'assets/lottie/success2.json';
   static const String orderSuccessful =
       'assets/images/animations/3d-casual-life.png';
 

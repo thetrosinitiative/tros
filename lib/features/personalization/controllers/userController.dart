@@ -9,16 +9,15 @@ class UserController extends GetxController {
   final userModel = UserModel.empty().obs;
   final profileLoading = false.obs;
   final userRepository = Get.put(UserRepository());
- 
-  Future<void> getUser(String id) async {
+
+  Future<void> getUser(Map<String, dynamic> userDetail) async {
     try {
       profileLoading.value = true;
-      final user = await userRepository.getUser(id);
+      final user = await userRepository.getUser(userDetail);
       userModel(user);
     } catch (e) {
       userModel(UserModel.empty());
-    }
-    finally{
+    } finally {
       profileLoading.value = false;
     }
   }

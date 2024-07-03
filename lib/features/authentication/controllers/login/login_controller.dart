@@ -61,10 +61,12 @@ class LoginController extends GetxController {
       // LOGIN USER
       final user = await AuthenticationRepository.instance.signin(details);
       debugPrint(user.toString());
+      // debugPrint(user['accessToken']);
+
       // REMOVE LOADER
       isLoading.value = false;
       // GET UER DETAIL
-      // await userController.getUser(user['userId']);
+      await userController.getUser(user);
 
       // REDIRECT TO HOME
       Get.to(() => const NavigationMenu());

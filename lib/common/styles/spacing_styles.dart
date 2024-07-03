@@ -18,4 +18,7 @@ class PSpacingStyle {
       left: PSizes.defaultSpace,
       bottom: PSizes.defaultSpace,
       right: PSizes.defaultSpace);
+
+  static const EdgeInsetsGeometry mapPadding = EdgeInsets.only(
+      top: PSizes.appBarHeight - 10, left: 0, bottom: 0, right: 0);
 }

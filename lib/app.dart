@@ -23,13 +23,11 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const SafeArea(
-        child: Scaffold(
-          backgroundColor: PColors.primary,
-          body: Center(
-            child: CircularProgressIndicator(
-              color: Colors.white,
-            ),
+      home: const Scaffold(
+        backgroundColor: PColors.primary,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
           ),
         ),
       ),
