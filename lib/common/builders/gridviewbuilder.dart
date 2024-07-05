@@ -8,7 +8,7 @@ class GridViewBuilder extends StatelessWidget {
     this.itemCount = 4,
     required this.mainAxisExtent,
   });
-  final Widget child;
+  final Widget Function(BuildContext, int) child;
   final int itemCount;
   final double mainAxisExtent;
   @override
@@ -23,6 +23,6 @@ class GridViewBuilder extends StatelessWidget {
             mainAxisExtent: mainAxisExtent,
             crossAxisSpacing: PSizes.gridViewSpacing,
             mainAxisSpacing: PSizes.gridViewSpacing),
-        itemBuilder: (_, __) => child);
+        itemBuilder: child);
   }
 }

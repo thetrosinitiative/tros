@@ -4,12 +4,18 @@ import '../../../../common/loaders/loaders.dart';
 import '../../models/redeem/redeem_model.dart';
 import '../../repositories/redeem/product_repository.dart';
 
-class AllProductController extends GetxController {
-  static AllProductController get instance => Get.find();
+class ProductController extends GetxController {
+  static ProductController get instance => Get.find();
 
-  final repository = ProductRepository.instance;
+  final repository = Get.put(ProductRepository());
   final Rx<String> selectedSortOption = 'Name'.obs;
   final RxList<ProductModel> products = <ProductModel>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchProductQuery();
+  }
 
   Future<List<ProductModel>> fetchProductQuery() async {
     try {

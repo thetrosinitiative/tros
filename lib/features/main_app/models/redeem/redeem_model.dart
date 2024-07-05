@@ -8,9 +8,7 @@ class ProductModel {
   int size;
   int stock;
   String image;
-  int version;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+
   ProductModel({
     required this.id,
     required this.name,
@@ -19,9 +17,6 @@ class ProductModel {
     required this.size,
     required this.stock,
     required this.image,
-    required this.version,
-    this.createdAt,
-    this.updatedAt,
   });
 
   ProductModel copyWith({
@@ -32,9 +27,6 @@ class ProductModel {
     int? size,
     int? stock,
     String? image,
-    int? version,
-    DateTime? createdAt,
-    DateTime? updatedAt,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -44,9 +36,6 @@ class ProductModel {
       size: size ?? this.size,
       stock: stock ?? this.stock,
       image: image ?? this.image,
-      version: version ?? this.version,
-      createdAt: createdAt ?? this.createdAt,
-      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 
@@ -60,35 +49,30 @@ class ProductModel {
     result.addAll({'size': size});
     result.addAll({'stock': stock});
     result.addAll({'image': image});
-    result.addAll({'version': version});
-    if (createdAt != null) {
-      result.addAll({'createdAt': createdAt!.millisecondsSinceEpoch});
-    }
-    if (updatedAt != null) {
-      result.addAll({'updatedAt': updatedAt!.millisecondsSinceEpoch});
-    }
 
     return result;
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'] ?? '',
+      id: map['_id'] ?? '',
       name: map['name'] ?? '',
       description: map['description'] ?? '',
       price: map['price']?.toInt() ?? 0,
       size: map['size']?.toInt() ?? 0,
       stock: map['stock']?.toInt() ?? 0,
       image: map['image'] ?? '',
-      version: map['__v']?.toInt() ?? 0,
-      createdAt: map['createdAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['createdAt'])
-          : null,
-      updatedAt: map['updatedAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['updatedAt'])
-          : null,
     );
   }
+
+  static ProductModel empty() => ProductModel(
+      id: '',
+      name: '',
+      description: '',
+      price: 0,
+      size: 0,
+      stock: 0,
+      image: '');
 
   String toJson() => json.encode(toMap());
 
@@ -97,7 +81,7 @@ class ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, name: $name, description: $description, price: $price, size: $size, stock: $stock, image: $image, version: $version, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ProductModel(id: $id, name: $name, description: $description, price: $price, size: $size, stock: $stock, image: $image)';
   }
 
   @override
@@ -111,10 +95,7 @@ class ProductModel {
         other.price == price &&
         other.size == size &&
         other.stock == stock &&
-        other.image == image &&
-        other.version == version &&
-        other.createdAt == createdAt &&
-        other.updatedAt == updatedAt;
+        other.image == image;
   }
 
   @override
@@ -125,9 +106,6 @@ class ProductModel {
         price.hashCode ^
         size.hashCode ^
         stock.hashCode ^
-        image.hashCode ^
-        version.hashCode ^
-        createdAt.hashCode ^
-        updatedAt.hashCode;
+        image.hashCode;
   }
 }

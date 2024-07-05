@@ -16,12 +16,19 @@ import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
 
+import '../../../../common/widgets/shimmers/product_shimmer.dart';
+import '../../../../utils/helpers/cloud_helper.dart';
+import '../../controllers/redeem/product_controller.dart';
+import '../../models/redeem/redeem_model.dart';
+import 'redeem_detail/widgets/product_container.dart';
+
 class RedeemPage extends StatelessWidget {
   const RedeemPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
+    final productController = Get.put(ProductController());
     return Scaffold(
         backgroundColor: PColors.light,
         appBar: const BoldAppbar(text: 'Redeem'),
@@ -79,69 +86,29 @@ class RedeemPage extends StatelessWidget {
 
                     // BEST SELLING ITEMS
 
-                    GridViewBuilder(
-                      mainAxisExtent: 220,
-                      child: GestureDetector(
-                        onTap: () => Get.to(() => const RedeemDetail()),
-                        child: TRoundedContainer(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 10.0),
-                          width: 164,
-                          backgroundColor: PColors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Center(
-                                child: PRoundedImage(
-                                  backgroundColor: PColors.white,
-                                  imageUrl: PImages.bottle,
-                                  height: 155,
-                                  width: 133,
-                                ),
+                    FutureBuilder<List<ProductModel>>(
+                        future: productController.fetchProductQuery(),
+                        builder: (context, snapshot) {
+                          const loader = ProductShimmer();
+                          final widget =
+                              KCloudHelperFunction.checkMultiRecordState(
+                                  snapshot: snapshot, loader: loader);
+                          if (widget != null) return widget;
+                          // PRODUCTS AVAILABLE
+                          final data = snapshot.data!;
+                          return GridViewBuilder(
+                            itemCount: data.length,
+                            mainAxisExtent: 220,
+                            child: (_, index) => GestureDetector(
+                              onTap: () => Get.to(() => RedeemDetail(
+                                    product: data[index],
+                                  )),
+                              child: ProductContainer(
+                                product: data[index],
                               ),
-                              Text(
-                                'WATER BOTTLE',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .apply(
-                                        fontSizeDelta: 1, fontWeightDelta: 1),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                // mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    '12 Tros coins',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge!
-                                        .apply(
-                                            fontSizeDelta: 4,
-                                            fontWeightDelta: 1,
-                                            color: PColors.primary),
-                                  ),
-                                  GestureDetector(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: PCircularIcon(
-                                          backgroundColor: PColors.primary,
-                                          icon: Icons.add,
-                                          width: 25,
-                                          height: 25,
-                                          size: 18,
-                                          color: PColors.white,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                            ),
+                          );
+                        }),
                   ],
                 )
                 // FOR YOU

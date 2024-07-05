@@ -10,9 +10,11 @@ import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
-class RedeemDetail extends StatelessWidget {
-  const RedeemDetail({super.key});
+import '../../../../models/redeem/redeem_model.dart';
 
+class RedeemDetail extends StatelessWidget {
+  const RedeemDetail({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,20 +26,23 @@ class RedeemDetail extends StatelessWidget {
         child: Column(
           children: [
             // PRODUCT IMAGE VIEW
-            const PCurvedEdgesWidget(
+            PCurvedEdgesWidget(
               child: TRoundedContainer(
                 backgroundColor: PColors.light,
                 height: 330,
                 radius: 0,
                 width: double.infinity,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
                       child: PRoundedImage(
-                        imageUrl: PImages.earbud,
+                        backgroundColor: PColors.light,
+                        isNetworkImage: true,
+                        imageUrl: product.image,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: PSizes.spaceBtwItems,
                     ),
                   ],
@@ -55,7 +60,7 @@ class RedeemDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'AIRPOD',
+                          product.name,
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
@@ -77,7 +82,7 @@ class RedeemDetail extends StatelessWidget {
                     height: PSizes.spaceBtwItems,
                   ),
                   Text(
-                    '1kg, 40TR',
+                    '${product.size}kg, ${product.price}TR',
                     style: Theme.of(context).textTheme.labelLarge!.apply(
                         fontSizeDelta: 7,
                         fontWeightDelta: 3,
@@ -87,7 +92,7 @@ class RedeemDetail extends StatelessWidget {
                     height: PSizes.spaceBtwItems,
                   ),
                   Text(
-                    'Airpods are the most popular gadgets in the world. Airpods are made of a single piece of fabric, which can be made from a variety of materials. Airpods can be used for a variety of purposes, such as playing games, watching movies, or watching television.',
+                    product.description,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -100,50 +105,51 @@ class RedeemDetail extends StatelessWidget {
                   // PRODUCT RATINGS
                   GridViewBuilder(
                       mainAxisExtent: 67,
-                      child: TRoundedContainer(
-                        width: 165,
-                        showBorder: true,
-                        child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const PRoundedImage(
-                              imageUrl: PImages.star,
-                              width: 35,
-                              height: 35,
-                              backgroundColor: PColors.white,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                      child: (_, __) => TRoundedContainer(
+                            width: 165,
+                            showBorder: true,
+                            child: Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                          text: '4.8 ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelLarge!
-                                              .apply(
-                                                fontSizeDelta: 6,
-                                                fontWeightDelta: 3,
-                                                color: PColors.primary,
-                                              )),
-                                      TextSpan(
-                                          text: '(15)',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium),
-                                    ],
-                                  ),
+                                const PRoundedImage(
+                                  imageUrl: PImages.star,
+                                  width: 35,
+                                  height: 35,
+                                  backgroundColor: PColors.white,
                                 ),
-                                Text('Reviews',
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium)
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                              text: '4.8 ',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge!
+                                                  .apply(
+                                                    fontSizeDelta: 6,
+                                                    fontWeightDelta: 3,
+                                                    color: PColors.primary,
+                                                  )),
+                                          TextSpan(
+                                              text: '(15)',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium),
+                                        ],
+                                      ),
+                                    ),
+                                    Text('Reviews',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium)
+                                  ],
+                                )
                               ],
-                            )
-                          ],
-                        ),
-                      )),
+                            ),
+                          )),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   )

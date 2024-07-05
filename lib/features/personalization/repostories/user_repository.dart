@@ -11,19 +11,21 @@ class UserRepository extends GetxController {
   Future<UserModel> getUser(Map<String, dynamic> userDetail) async {
     try {
       final user = await THttpHelper.get(
-          userDetail['userId'], 'https://tros-api.onrender.com/api/v1/account',
-          accessToken: userDetail["accessToken"]);
-      debugPrint(user.toString());
-      final userModel = UserModel(
-        id: user['_id'],
-        firstName: user['firstName'],
-        lastName: user['lastName'],
-        email: user['email'],
-        phoneNumber: user['balance'],
-        emailVerified: user['emailVerified'],
-        phoneVerified: user['phoneVerified'],
-        balance: user['balance'],
+        userDetail['userId'],
+        'https://tros-api.onrender.com/api/v1/account',
       );
+      // debugPrint(user.toString());
+      final userModel = UserModel.fromMap(user);
+      // UserModel(
+      //   id: user['id'],
+      //   firstName: user['firstName'],
+      //   lastName: user['lastName'],
+      //   email: user['email'],
+      //   phoneNumber: user['phoneNumber'],
+      //   emailVerified: user['emailVerified'],
+      //   phoneVerified: user['phoneVerified'],
+      //   balance: user['balance'],
+      // );
       return userModel;
     } catch (e) {
       return UserModel.empty();

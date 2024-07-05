@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/user_model.dart';
@@ -14,7 +15,9 @@ class UserController extends GetxController {
     try {
       profileLoading.value = true;
       final user = await userRepository.getUser(userDetail);
+      debugPrint(user.toString());
       userModel(user);
+      update();
     } catch (e) {
       userModel(UserModel.empty());
     } finally {

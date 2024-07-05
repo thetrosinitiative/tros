@@ -8,7 +8,6 @@ class UserModel {
   String id;
   String firstName;
   String lastName;
-  String? username;
   final String email;
   String phoneNumber;
   String? profilePicture;
@@ -21,7 +20,6 @@ class UserModel {
     required this.id,
     required this.firstName,
     required this.lastName,
-    this.username,
     required this.email,
     required this.phoneNumber,
     this.profilePicture,
@@ -34,7 +32,6 @@ class UserModel {
     String? id,
     String? firstName,
     String? lastName,
-    String? username,
     String? email,
     String? phoneNumber,
     String? profilePicture,
@@ -46,7 +43,6 @@ class UserModel {
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
-      username: username ?? this.username,
       email: email ?? this.email,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       profilePicture: profilePicture ?? this.profilePicture,
@@ -62,9 +58,6 @@ class UserModel {
     result.addAll({'id': id});
     result.addAll({'firstName': firstName});
     result.addAll({'lastName': lastName});
-    if (username != null) {
-      result.addAll({'username': username});
-    }
     result.addAll({'email': email});
     result.addAll({'phoneNumber': phoneNumber});
     if (profilePicture != null) {
@@ -82,7 +75,6 @@ class UserModel {
       id: map['id'] ?? '',
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
-      username: map['username'],
       email: map['email'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',
       profilePicture: map['profilePicture'],
@@ -101,7 +93,6 @@ class UserModel {
         id: '',
         firstName: '',
         lastName: '',
-        username: '',
         email: '',
         phoneNumber: '',
         profilePicture: '', emailVerified: false, phoneVerified: false,
@@ -155,7 +146,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phoneNumber: $phoneNumber, profilePicture: $profilePicture, emailVerified: $emailVerified, phoneVerified: $phoneVerified, balance: $balance)';
+    return 'UserModel(id: $id, firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, profilePicture: $profilePicture, emailVerified: $emailVerified, phoneVerified: $phoneVerified, balance: $balance)';
   }
 
   @override
@@ -166,7 +157,6 @@ class UserModel {
         other.id == id &&
         other.firstName == firstName &&
         other.lastName == lastName &&
-        other.username == username &&
         other.email == email &&
         other.phoneNumber == phoneNumber &&
         other.profilePicture == profilePicture &&
@@ -180,7 +170,6 @@ class UserModel {
     return id.hashCode ^
         firstName.hashCode ^
         lastName.hashCode ^
-        username.hashCode ^
         email.hashCode ^
         phoneNumber.hashCode ^
         profilePicture.hashCode ^

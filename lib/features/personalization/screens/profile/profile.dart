@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/common/builders/listdividerseperated.dart';
 import 'package:tros/common/styles/spacing_styles.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:tros/features/personalization/controllers/userController.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
@@ -12,6 +14,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userController = UserController.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -29,20 +32,25 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(
                 height: PSizes.spaceBtwItems,
               ),
-              Text(
-                'Oke Daniel',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .apply(fontSizeDelta: -2, fontWeightDelta: 1),
-              ),
+
+              Obx(() {
+                return Text(
+                  "${userController.userModel.value.firstName} ${userController.userModel.value.lastName}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .apply(fontSizeDelta: -2, fontWeightDelta: 1),
+                );
+              }),
               const SizedBox(
                 height: PSizes.spaceBtwItems / 2,
               ),
-              Text(
-                'danial123@gmail.com',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              Obx(() {
+                return Text(
+                  userController.userModel.value.email,
+                  style: Theme.of(context).textTheme.titleMedium,
+                );
+              }),
               const SizedBox(
                 height: PSizes.spaceBtwItems,
               ),

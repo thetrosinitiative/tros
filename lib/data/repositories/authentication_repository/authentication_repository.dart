@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tros/features/authentication/screens/login/login.dart';
 import 'package:tros/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:tros/navigation_menu.dart';
 import 'package:tros/utils/exceptions/auth_esception.dart';
 import 'package:tros/utils/http/http_client.dart';
 

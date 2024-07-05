@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/features/main_app/screens/scanner/scanner.dart';
+import 'package:tros/features/personalization/controllers/userController.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
@@ -14,6 +15,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userController = UserController.instance;
     return AppBar(
       leadingWidth: PHelperFunctions.screenWidth() / 2,
       automaticallyImplyLeading: false,
@@ -30,10 +32,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             const SizedBox(
               width: PSizes.spaceBtwItems,
             ),
-            Text(
-              'Hi Daniel',
-              style: Theme.of(context).textTheme.titleLarge,
-            )
+            Obx(() {
+              return Text(
+                'Hi ${userController.userModel.value.firstName}',
+                style: Theme.of(context).textTheme.titleLarge,
+              );
+            })
           ],
         ),
       ),

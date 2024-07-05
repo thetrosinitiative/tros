@@ -24,6 +24,7 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
 
   final userController = Get.put(UserController());
+  final userToken = ''.obs;
 
   @override
   void onInit() async {
@@ -60,8 +61,7 @@ class LoginController extends GetxController {
       };
       // LOGIN USER
       final user = await AuthenticationRepository.instance.signin(details);
-      debugPrint(user.toString());
-      // debugPrint(user['accessToken']);
+      userToken.value = user['accessToken'];
 
       // REMOVE LOADER
       isLoading.value = false;
