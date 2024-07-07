@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/loaders.dart';
-import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
+import 'package:tros/features/authentication/repository/authentication_repository.dart';
 import 'package:tros/features/authentication/screens/signup/verify_email.dart';
 
 class SignupController extends GetxController {

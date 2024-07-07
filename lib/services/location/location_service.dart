@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/loaders.dart';
+import 'package:tros/services/map/map_services.dart';
 
 import '../../features/main_app/screens/map/models/auto_complete_result.dart';
 
@@ -16,15 +17,24 @@ class TGeolocator extends GetxController {
   // initialize permission
   @override
   onInit() {
+    init();
     super.onInit();
-    _determinePosition();
+  }
+// @override
+
+  Future<void> init() async {
+    await getLatLang();
+
+    // Get.put(TMapService());
+    debugPrint(latitude.value.toString());
+    debugPrint(longitude.value.toString());
   }
 
 // Check for permission to access the device location and get the current permissions
   Future<bool> _determinePosition() async {
     bool serviceEnabled;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
+    // if (permissionEnabled.value) return true;
     if (!serviceEnabled) {
       return Future.error('Location services are disabled.');
     }
@@ -63,7 +73,10 @@ class TGeolocator extends GetxController {
     if (!hasPermission) return;
     await _getPosition().then((Position position) {
       longitude(position.longitude);
+      debugPrint(latitude.value.toString());
+
       latitude(position.latitude);
+      update();
     });
   }
 

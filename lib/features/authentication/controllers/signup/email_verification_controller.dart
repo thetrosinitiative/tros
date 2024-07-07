@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/common/widgets/success_screen/success_screen1.dart';
-import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
+import 'package:tros/features/authentication/repository/authentication_repository.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/text_strings.dart';
 

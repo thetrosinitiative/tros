@@ -20,7 +20,7 @@ class ProfileListDividerSeperated extends StatelessWidget {
         },
         itemBuilder: (_, index) {
           return ListTile(
-            onTap: () {},
+            onTap: accountTiles.getRoute(index),
             focusColor: PColors.grey,
             contentPadding: const EdgeInsets.symmetric(horizontal: 15),
             leading: accountTiles.getIcon(index),

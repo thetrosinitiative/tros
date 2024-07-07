@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:tros/features/main_app/screens/exchange/exchange.dart';
+import 'package:tros/features/redeem/screens/exchange/exchange.dart';
 import 'package:tros/features/main_app/screens/home/home.dart';
 import 'package:tros/features/main_app/screens/map/map.dart';
-import 'package:tros/features/main_app/screens/redeem/redeem.dart';
-import 'package:tros/features/personalization/screens/profile/profile.dart';
+import 'package:tros/features/redeem/screens/redeem/redeem.dart';
+import 'package:tros/features/personalization/screens/settings.dart';
 // import 'package:iconsax/iconsax.dart';
 // import 'package:tros/features/personalization/screens/settings/settings.dart';
 // import 'package:tros/features/shop/screens/wishlist/wishlist.dart';
 // import 'features/shop/screens/home/home.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
+
+import 'services/location/location_service.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -20,6 +22,8 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = PHelperFunctions.isDarkMode(context);
     final controller = Get.put(NavigationController());
+    Get.put(TGeolocator());
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: Container(

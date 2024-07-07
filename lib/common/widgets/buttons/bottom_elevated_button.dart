@@ -4,8 +4,10 @@ class BottomElevatedButton extends StatelessWidget {
   const BottomElevatedButton({
     super.key,
     required this.text,
+    required this.onPressed,
   });
   final String text;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class BottomElevatedButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100))),
-          onPressed: () {},
+          onPressed: onPressed,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(text),

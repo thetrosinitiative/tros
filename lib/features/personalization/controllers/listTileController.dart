@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
+import 'package:tros/features/authentication/repository/authentication_repository.dart';
+import 'package:tros/features/personalization/screens/profile/profile_edit.dart';
 import 'package:tros/utils/constants/colors.dart';
 
 class ListTileProperties {
@@ -13,7 +15,7 @@ class ListTileProperties {
         'title': 'Edit Profile',
         'leading': Icon(Iconsax.user_edit_bold, size: size),
         'route': '/profile',
-        'onTap': () {}
+        'onTap': () => Get.to(() => const EditProfile())
       },
       {
         'title': 'My Notifications',
@@ -60,5 +62,5 @@ class ListTileProperties {
   List getTileList() => listTileWidget(size);
   String getTitle(index) => listTileWidget(size)[index]['title'];
   Widget getIcon(index) => listTileWidget(size)[index]['leading'];
-  String getRoute(index) => listTileWidget(size)[index]['route'];
+  Function()? getRoute(index) => listTileWidget(size)[index]['onTap'];
 }

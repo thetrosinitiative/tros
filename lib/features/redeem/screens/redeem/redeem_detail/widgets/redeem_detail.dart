@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tros/common/builders/gridviewbuilder.dart';
 import 'package:tros/common/widgets/appbar/boldAppbar.dart';
 import 'package:tros/common/widgets/buttons/bottom_elevated_button.dart';
@@ -10,6 +11,7 @@ import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
+import '../../../../controllers/redeem/cart_controller.dart';
 import '../../../../models/redeem/redeem_model.dart';
 
 class RedeemDetail extends StatelessWidget {
@@ -17,6 +19,8 @@ class RedeemDetail extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+
     return Scaffold(
       appBar: const BoldAppbar(
         text: 'Gadgets',
@@ -66,17 +70,25 @@ class RedeemDetail extends StatelessWidget {
                               .labelLarge!
                               .apply(fontSizeDelta: 6, fontWeightDelta: 4),
                         ),
-                        ProductAddAndRemove(
-                          width: 35,
-                          height: 36,
-                          addColor: PColors.white,
-                          addBgColor: PColors.primary,
-                          minusColor: PColors.darkGrey,
-                          minusBgColor: PColors.light,
-                          text: '4',
-                          addOnPressed: () {},
-                          minusOnPressed: () {},
-                        )
+                        Obx(() {
+                          return ProductAddAndRemove(
+                            width: 35,
+                            height: 36,
+                            addColor: PColors.white,
+                            addBgColor: PColors.primary,
+                            minusColor: PColors.darkGrey,
+                            minusBgColor: PColors.light,
+                            text: cartController.productQuantityInCart.value
+                                .toString(),
+                            addOnPressed: () =>
+                                cartController.productQuantityInCart.value += 1,
+                            minusOnPressed: () =>
+                                cartController.productQuantityInCart.value < 1
+                                    ? null
+                                    : cartController
+                                        .productQuantityInCart.value -= 1,
+                          );
+                        })
                       ]),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
@@ -159,9 +171,14 @@ class RedeemDetail extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomElevatedButton(
-        text: 'Add to cart',
-      ),
+      bottomNavigationBar: Obx(() {
+        return BottomElevatedButton(
+          text: 'Add to cart',
+          onPressed: cartController.productQuantityInCart < 1
+              ? () {}
+              : () => cartController.addToCart(product),
+        );
+      }),
     );
   }
 }

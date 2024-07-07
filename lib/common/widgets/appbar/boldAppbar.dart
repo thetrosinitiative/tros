@@ -10,13 +10,16 @@ class BoldAppbar extends StatelessWidget implements PreferredSizeWidget {
     required this.text,
     this.iconData = Icons.gpp_maybe_outlined,
     this.useScaffoldBgColor = false,
+    this.useAction = true,
+    this.actionButton,
   });
 
-  final bool implyLeading;
+  final bool implyLeading, useAction;
   final Function()? onPressed;
   final String text;
   final IconData? iconData;
   final bool useScaffoldBgColor;
+  final Widget? actionButton;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +35,15 @@ class BoldAppbar extends StatelessWidget implements PreferredSizeWidget {
             letterSpacingDelta: 2),
       ),
       actions: [
-        IconButton(
-            onPressed: onPressed,
-            icon: Icon(
-              iconData,
-              size: 28,
-              color: PColors.primary,
-            ))
+        if (useAction)
+          actionButton ??
+              IconButton(
+                  onPressed: onPressed,
+                  icon: Icon(
+                    iconData,
+                    size: 28,
+                    color: PColors.primary,
+                  ))
       ],
     );
   }

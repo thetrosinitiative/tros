@@ -38,11 +38,7 @@ class _MapSearchBarState extends State<MapSearchBar> {
           _debounce = Timer(const Duration(milliseconds: 700), () async {
             // await Future.delayed(Duration(milliseconds: 700));
             if (value.length > 2) {
-              // if (!mapController.searchToggle.value) {
-              //   mapController.searchToggle.value = true;
-              //   // !mapController.searchToggle.value;
-              //   mapController.markers = {};
-              // }
+
 
               List<AutoCompleteResult> searchResults =
                   await mapController.searchPlaces(value);

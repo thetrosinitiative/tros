@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tros/common/loaders/loaders.dart';
 // import 'package:tros/common/loaders/loaders.dart';
-import 'package:tros/data/repositories/authentication_repository/authentication_repository.dart';
+import 'package:tros/features/authentication/repository/authentication_repository.dart';
 import 'package:tros/navigation_menu.dart';
 
 import '../../../personalization/controllers/userController.dart';

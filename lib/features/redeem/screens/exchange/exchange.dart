@@ -5,7 +5,7 @@ import 'package:tros/common/widgets/appbar/boldAppbar.dart';
 import 'package:tros/common/widgets/appbar/searchBar.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
-import 'package:tros/features/main_app/screens/exchange/details.dart';
+import 'package:tros/features/redeem/screens/exchange/details.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';

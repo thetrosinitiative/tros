@@ -18,29 +18,36 @@ class MapWidget extends StatefulWidget {
 }
 
 class _MapWidgetState extends State<MapWidget> {
-  final locationController = TGeolocator.instance;
-  final mapController = TMapService.instance;
-
   // initialize the map position on load
 
   // Markers
   @override
   Widget build(BuildContext context) {
+    final locationController = TGeolocator.instance;
+
+    final mapController = TMapService.instance;
+
     final screenWidth = PDeviceUtils.getScreenWidth(context);
     final screenHeight = PDeviceUtils.getScreenHeight();
-    // debugPrint(_position!.latitude.toString());
+    debugPrint(locationController.latitude.value.toString());
     return TRoundedContainer(
       height: screenHeight,
       width: screenWidth,
       child: GoogleMap(
+        // padding: const EdgeInsets.only(
+        //   top: 600.0,
+        // ),
+        zoomControlsEnabled: false,
+        myLocationEnabled: true,
+        // myLocationButtonEnabled: true,
         mapType: MapType.normal,
         markers: mapController.markers,
         initialCameraPosition: CameraPosition(
           target: LatLng(
               locationController.latitude.value,
-              locationController.latitude
+              locationController.longitude
                   .value), // LatLng(_position!.latitude, _position!.latitude),
-          zoom: 14.4746,
+          zoom: 12,
         ),
         onMapCreated: (GoogleMapController controller) {
           mapController.controller.complete(controller);

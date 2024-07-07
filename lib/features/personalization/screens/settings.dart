@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/common/builders/listdividerseperated.dart';
 import 'package:tros/common/styles/spacing_styles.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:tros/common/widgets/images/circular_images.dart';
 import 'package:tros/features/personalization/controllers/userController.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
@@ -25,9 +26,11 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(
                 height: PSizes.spaceBtwSections,
               ),
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage(PImages.appLogo),
+              const PCircularImage(
+                width: 60,
+                height: 60,
+                imageUrl: PImages.appLogo,
+                backgroundColor: PColors.containerGrey,
               ),
               const SizedBox(
                 height: PSizes.spaceBtwItems,

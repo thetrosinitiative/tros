@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tros/features/main_app/controllers/redeem/product_controller.dart';
-import 'package:tros/features/main_app/models/redeem/redeem_model.dart';
+import 'package:tros/features/redeem/controllers/redeem/product_controller.dart';
+import 'package:tros/features/redeem/models/redeem/redeem_model.dart';
 
 import '../../../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../../../common/widgets/icons/circular_icon.dart';
@@ -12,8 +12,10 @@ class ProductContainer extends StatelessWidget {
   const ProductContainer({
     super.key,
     required this.product,
+    required this.onPressed,
   });
   final ProductModel product;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class ProductContainer extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                  onTap: () {},
+                  onTap: onPressed,
                   child: const Center(
                     child: PCircularIcon(
                       backgroundColor: PColors.primary,

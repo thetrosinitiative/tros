@@ -6,7 +6,7 @@ class ProductPriceText extends StatelessWidget {
     required this.price,
     this.isLarge = false,
     this.lineThrough = false,
-    this.currencySign = '\$',
+    this.currencySign = 'TR ',
     this.maxLines = 1,
   });
   final bool isLarge, lineThrough;

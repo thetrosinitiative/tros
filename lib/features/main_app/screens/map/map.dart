@@ -21,14 +21,13 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final mapController = Get.put(TMapService());
   int markerIdCounter = 1;
 
   @override
   Widget build(BuildContext context) {
+    final mapController = Get.put(TMapService());
+
     final screenWidth = PDeviceUtils.getScreenWidth(context);
-    final screenHeight = PDeviceUtils.getScreenHeight();
-    Get.put(TGeolocator());
     return Scaffold(
       backgroundColor: PColors.light,
       body: SingleChildScrollView(
@@ -40,54 +39,26 @@ class _MapPageState extends State<MapPage> {
               child: Column(
                 children: [
                   const MapSearchBar(),
-                  mapController.searchToggle.value
-                      ? mapController.allReturnedResults.isNotEmpty
-                          ? Positioned(
-                              top: 100,
-                              left: 15,
-                              child: Container(
-                                height: 200,
-                                width: screenWidth - 30.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  color: Colors.white.withOpacity(0.7),
-                                ),
-                                child: ListView(
-                                  children: [
-                                    ...mapController.allReturnedResults.map(
-                                        (e) => buildListItem(
-                                            e,
-                                            mapController.searchToggle,
-                                            context))
-                                  ],
-                                ),
-                              ))
-                          : Positioned(
-                              top: 100,
-                              left: 15,
-                              child: Container(
-                                  height: 200,
-                                  width: screenWidth - 30.0,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: Colors.white.withOpacity(0.7),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      const Text('No result to show'),
-                                      const SizedBox(
-                                        height: PSizes.spaceBtwItems,
-                                      ),
-                                      SizedBox(
-                                        width: 125,
-                                        child: ElevatedButton(
-                                            onPressed: () {},
-                                            child: const Text('Close This')),
-                                      )
-                                    ],
-                                  )),
-                            )
-                      : Container(),
+                  mapController.allReturnedResults.isNotEmpty
+                      ? Positioned(
+                          top: 100,
+                          left: 15,
+                          child: Container(
+                            height: 200,
+                            width: screenWidth - 30.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                            child: ListView(
+                              children: [
+                                ...mapController.allReturnedResults.map((e) =>
+                                    buildListItem(
+                                        e, mapController.searchToggle, context))
+                              ],
+                            ),
+                          ))
+                      : const SizedBox(),
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
@@ -135,6 +106,8 @@ class _MapPageState extends State<MapPage> {
   }
 
   void _setMarker(point) {
+    final mapController = TMapService.instance;
+
     var counter = markerIdCounter++;
     final Marker marker = Marker(
         markerId: MarkerId('marker _$counter'),
@@ -148,10 +121,13 @@ class _MapPageState extends State<MapPage> {
 
   //
   Future<void> goToSearchedPlace(double lat, double lng) async {
+    final mapController = TMapService.instance;
+
     final GoogleMapController controller =
         await mapController.controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: LatLng(lat, lng), zoom: 12)));
+    _setMarker(LatLng(lat, lng));
   }
 
   Widget buildListItem(

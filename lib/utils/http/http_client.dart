@@ -31,6 +31,19 @@ class THttpHelper {
     return _handleResponse(response);
   }
 
+  // helper method to make map get requests
+  static Future<dynamic> getM(
+    String baseUrl,
+  ) async {
+    final response = await http.get(
+      Uri.parse(baseUrl),
+    );
+
+    // debugPrint(response.toString());
+
+    return _handleResponse(response);
+  }
+
   // helper method for POST request
   static Future<dynamic> post(
       {required String baseUrl,
@@ -90,6 +103,8 @@ class THttpHelper {
       // } else {
       final body = jsonDecode(response.body);
       debugPrint(body.runtimeType.toString());
+      debugPrint(body.toString());
+
       return body;
       // }
     } else {
