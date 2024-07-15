@@ -4,6 +4,8 @@ import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/features/authentication/repository/authentication_repository.dart';
 import 'package:tros/features/authentication/screens/signup/verify_email.dart';
 
+import '../../../../utils/helpers/network_manager.dart';
+
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
@@ -28,10 +30,13 @@ class SignupController extends GetxController {
       isLoading.value = true;
       // CHECK INTERNET CONNECTIVITY
       // final isConnected = await NetworkManager.instance.isConnected();
-      // if (!isConnected) {
-      //   PFullScreenLoader.stopLoading();
-      //   return;
-      // }
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        PLoaders.errorSnackBar(
+            title: "Ooops!", message: 'No internet connection');
+
+        return;
+      }
 
       // FORM VALIDATION
       if (!signupFormKey.currentState!.validate()) {

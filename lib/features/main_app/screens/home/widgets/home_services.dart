@@ -4,9 +4,13 @@ import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.d
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
 import 'package:tros/common/widgets/texts/section_heading.dart';
 import 'package:tros/features/main_app/screens/map/map.dart';
+import 'package:tros/features/main_app/screens/scanner/scanner.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
+
+import '../../../../../data/dummy_data/exchange_data.dart';
+import '../../../../redeem/screens/exchange/details.dart';
 
 class HomeServices extends StatelessWidget {
   const HomeServices({
@@ -35,11 +39,16 @@ class HomeServices extends StatelessWidget {
                   PImages.rewardPlain,
                   PImages.search
                 ];
-                final strings = ['Locate', 'Recycling', 'Rewards', 'Search'];
+                final strings = ['Locate', 'Recycle', 'Cashout', 'Airtime'];
                 final pages = [
                   const MapPage(),
-                  const MapPage(),
-                  const MapPage(),
+                  const ScannerPage(),
+                  ExchangeDetails(
+                    exchange: ExchangeDummy.exchangeData[0],
+                  ),
+                  ExchangeDetails(
+                    exchange: ExchangeDummy.exchangeData[1],
+                  ),
                   const MapPage(),
                 ];
                 return GestureDetector(
@@ -53,6 +62,9 @@ class HomeServices extends StatelessWidget {
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 3),
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: PSizes.spaceBtwItems / 2,
+                        ),
                         PRoundedImage(
                           color: PColors.white,
                           imageUrl: images[index],

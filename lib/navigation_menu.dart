@@ -86,6 +86,12 @@ class NavigationMenu extends StatelessWidget {
                     );
                   }),
                   SizedBox(height: size.width * .03),
+                  // Obx(() {
+                  //   return Text(
+                  //     controller.listOfLabels[index],
+                  //     style: Theme.of(context).textTheme.titleSmall,
+                  //   );
+                  // }),
                 ],
               ),
             ),
@@ -110,4 +116,5 @@ class NavigationController extends GetxController {
     Iconsax.gift_bold,
     Icons.person_rounded,
   ];
+  final List<String> listOfLabels = ['Home', 'Redeem', 'Exchange', 'User'];
 }

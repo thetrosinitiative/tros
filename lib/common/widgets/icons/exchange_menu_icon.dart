@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:tros/features/main_app/screens/scanner/transaction_details.dart';
 import 'package:tros/features/redeem/controllers/redeem/cart_controller.dart';
+import 'package:tros/features/redeem/screens/transactions/transactions.dart';
 
-import '../../../../features/redeem/screens/cart/cart.dart';
-import '../../../../utils/constants/colors.dart';
+import '../../../features/redeem/controllers/redeem/exchange_controller.dart';
+import '../../../features/redeem/screens/cart/cart.dart';
+import '../../../utils/constants/colors.dart';
 
-class CartCounterIcon extends StatelessWidget {
-  const CartCounterIcon({super.key, required this.iconColor});
+class ExchangeCounterIcon extends StatelessWidget {
+  const ExchangeCounterIcon({super.key, this.iconColor = PColors.primary});
   // final VoidCallback onPressed;
   final Color iconColor;
   @override
   Widget build(BuildContext context) {
-    final controller = CartController.instance;
+    final controller = Get.put(ExchangeController());
 
     return Stack(
       children: [
         IconButton(
-          onPressed: () => Get.to(() => const CartScreen()),
+          onPressed: () => Get.to(() => const TransactionScreen()),
           icon: Icon(
-            Iconsax.shopping_bag_outline,
+            Iconsax.gift_outline,
             color: iconColor,
           ),
         ),
@@ -32,7 +35,7 @@ class CartCounterIcon extends StatelessWidget {
             textColor: PColors.white,
             label: Obx(() {
               return Text(
-                controller.noOfCartItems.value.toString(),
+                controller.exchangeQuantityInCart.value.toString(),
                 style: const TextStyle(fontSize: 10),
               );
             }),

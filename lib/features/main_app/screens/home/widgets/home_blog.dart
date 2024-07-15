@@ -29,13 +29,12 @@ class HomeBlog extends StatelessWidget {
           ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 2,
+            itemCount: blogList.length,
             itemBuilder: (context, index) {
-              const img = [PImages.smartphone, PImages.brown];
               return Column(
                 children: [
                   PRoundedImage(
-                    imageUrl: img[index],
+                    imageUrl: blogList[index]['image'],
                     width: 373,
                     height: 183,
                   ),
@@ -55,8 +54,7 @@ class HomeBlog extends StatelessWidget {
                         const SizedBox(
                           height: PSizes.spaceBtwItems / 2,
                         ),
-                        const Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit in id lorem ipsum dolor sit'),
+                        Text(blogList[index]['title']),
                         Row(
                           children: [
                             const PCircularImage(
@@ -65,7 +63,7 @@ class HomeBlog extends StatelessWidget {
                               height: 35,
                             ),
                             Expanded(
-                              child: Text('Greenpacking',
+                              child: Text('Tros',
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)
                                       .textTheme
@@ -74,19 +72,19 @@ class HomeBlog extends StatelessWidget {
                                           fontWeightDelta: 2,
                                           color: PColors.primary)),
                             ),
-                            const Row(
+                            Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.timer_outlined,
                                   size: 17,
                                   color: PColors.primary,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: PSizes.xs,
                                 ),
                                 Text(
-                                  '7 October 2023',
-                                  style: TextStyle(
+                                  blogList[index]['date'],
+                                  style: const TextStyle(
                                       fontSize: 13,
                                       color: PColors.primary,
                                       fontWeight: FontWeight.w500),
@@ -110,3 +108,18 @@ class HomeBlog extends StatelessWidget {
     );
   }
 }
+
+List<Map<String, dynamic>> blogList = [
+  {
+    'title':
+        'Plastic pollution: Nigeria’s untapped ‘waste wealth’ fuels environmental disaster',
+    'image': PImages.trash1,
+    'date': '9 July 2024',
+  },
+  {
+    'title':
+        'Plastic Pollution Around the World: Rise in Global warming causing death',
+    'image': PImages.trash2,
+    'date': '10 July 2024',
+  }
+];

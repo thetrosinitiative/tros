@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/images/circular_images.dart';
-import 'package:tros/common/widgets/images/edge_rounded_images.dart';
-import 'package:tros/common/widgets/texts/section_heading.dart';
 import 'package:tros/features/authentication/controllers/login/login_controller.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_appbar.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_blog.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_info_card.dart';
 import 'package:tros/features/main_app/screens/home/widgets/home_map.dart';
-import 'package:tros/services/location/location_service.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 
 import 'package:tros/utils/constants/sizes.dart';
@@ -22,54 +19,53 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
-    return Scaffold(
-      appBar: const HomeAppBar(),
+    return const Scaffold(
+      appBar: HomeAppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(PSizes.spaceBtwSections),
+          padding: EdgeInsets.all(PSizes.spaceBtwSections),
           child: Column(
             children: [
               // Card containing information about the user tros coin, recycle rate etc
-              HomeInfoCard(controller: controller),
+              HomeInfoCard(),
 
               // SERVICES
-              const HomeServices(),
+              HomeServices(),
               // MAP OF AREAS WITH SMART BIN CLOSE TO THE USER
-              const SizedBox(
+              SizedBox(
                 height: PSizes.spaceBtwItems / 2,
               ),
-              const HomeMap(),
-              const SizedBox(height: PSizes.spaceBtwItems / 2),
+              HomeMap(),
+              // const SizedBox(height: PSizes.spaceBtwItems / 2),
 
-              Column(
-                children: [
-                  const PSectionHeading(
-                    title: 'Leaderboard',
-                    showActionButton: true,
-                  ),
-                  const SizedBox(height: PSizes.spaceBtwItems / 2),
-                  TRoundedContainer(
-                    width: 353,
-                    height: 150,
-                    backgroundColor: PColors.primary.withOpacity(0.4),
-                    child: const Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        LeaderboardWidget(),
-                        LeaderboardWidget(),
-                        LeaderboardWidget(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
+              // Column(
+              //   children: [
+              //     const PSectionHeading(
+              //       title: 'Leaderboard',
+              //       showActionButton: true,
+              //     ),
+              //     const SizedBox(height: PSizes.spaceBtwItems / 2),
+              //     TRoundedContainer(
+              //       width: 353,
+              //       height: 150,
+              //       backgroundColor: PColors.primary.withOpacity(0.4),
+              //       child: const Row(
+              //         crossAxisAlignment: CrossAxisAlignment.center,
+              //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //         children: [
+              //           LeaderboardWidget(),
+              //           LeaderboardWidget(),
+              //           LeaderboardWidget(),
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              SizedBox(
                 height: PSizes.spaceBtwItems / 2,
               ),
               // NEWS CARD
-              const HomeBlog()
+              HomeBlog()
             ],
           ),
         ),

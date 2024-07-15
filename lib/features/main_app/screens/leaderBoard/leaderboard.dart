@@ -20,7 +20,6 @@ import '../../../../common/widgets/images/circular_images.dart';
 import '../../../../common/widgets/shimmers/product_shimmer.dart';
 import '../../../../utils/helpers/cloud_helper.dart';
 import '../../../redeem/controllers/redeem/product_controller.dart';
-import '../../../redeem/models/redeem/redeem_model.dart';
 
 class RedeemPage extends StatelessWidget {
   const RedeemPage({super.key});

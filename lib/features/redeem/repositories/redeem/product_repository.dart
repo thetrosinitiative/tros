@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tros/utils/http/http_client.dart';
 
 import '../../../../utils/exceptions/auth_esception.dart';
+// import '../../models/redeem/product_model.dart';
 import '../../models/redeem/redeem_model.dart';
 
 class ProductRepository extends GetxController {

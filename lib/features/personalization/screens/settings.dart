@@ -27,14 +27,14 @@ class ProfilePage extends StatelessWidget {
                 height: PSizes.spaceBtwSections,
               ),
               const PCircularImage(
-                width: 60,
-                height: 60,
-                imageUrl: PImages.appLogo,
+                width: 80,
+                height: 80,
+                imageUrl: PImages.profile,
                 backgroundColor: PColors.containerGrey,
               ),
-              const SizedBox(
-                height: PSizes.spaceBtwItems,
-              ),
+              // const SizedBox(
+              //   height: PSizes.spaceBtwItems / 2,
+              // ),
 
               Obx(() {
                 return Text(

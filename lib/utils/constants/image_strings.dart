@@ -22,6 +22,8 @@ class PImages {
   static const String success = 'assets/lottie/success.json';
   static const String success2 = 'assets/lottie/success2.json';
   static const String loading2 = 'assets/lottie/loading2.json';
+  static const String empty1 = 'assets/lottie/empty1.json';
+  static const String empty2 = 'assets/lottie/empty2.json';
 
 // HHOMEPAGE IMAGES
   static const String dots = 'assets/images/app_images/dots.png';
@@ -37,8 +39,19 @@ class PImages {
   static const String rewardFill = 'assets/images/app_images/reward-fill.png';
   static const String search = 'assets/images/app_images/search.png';
   static const String smartphone = 'assets/images/app_images/smartphone.jpg';
+  static const String trash1 = 'assets/images/app_images/imgt1.png';
+  static const String trash2 = 'assets/images/app_images/imgt2.png';
+  static const String profile = 'assets/images/app_images/avatar.png';
+  static const String avatar2 = 'assets/images/app_images/avatar2.png';
+
   static const String brown = 'assets/images/app_images/brown.png';
   static const String earth = 'assets/images/app_images/earth.png';
+
+  // NETWORK IMAGES
+  static const String mtn = 'assets/images/app_images/mtn.png';
+  static const String glo = 'assets/images/app_images/glo.png';
+  static const String airtel = 'assets/images/app_images/airtel.png';
+  static const String mobile = 'assets/images/app_images/9mobile.png';
 
   // REDEEM PAGE IMAGES
   static const String airtime = 'assets/images/redeem_images/airtime.png';

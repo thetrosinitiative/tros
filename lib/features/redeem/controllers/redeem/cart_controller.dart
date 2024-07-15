@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tros/features/personalization/controllers/userController.dart';
 
-import 'package:tros/utils/constants/enums.dart';
 import 'package:tros/utils/local_storage/storage_utility.dart';
 
 import '../../../../common/loaders/loaders.dart';
@@ -25,11 +24,17 @@ class CartController extends GetxController {
   final noOfCartItems = 0.obs;
   final totalCartPrice = 0.0.obs;
   final productQuantityInCart = 0.obs;
-  final id = 'uwiwjeioj82782';
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
+  final userController = UserController.instance;
 
   // /ADD ITEMS TO CART
   void addToCart(ProductModel product) {
+    if (product.price > userController.userModel.value.balance) {
+      PLoaders.errorSnackBar(
+          title: "Ooops!",
+          message: 'your tros balance is low for this product');
+      return;
+    }
     try {
       if (productQuantityInCart.value < 1) {
         PLoaders.customToast(message: 'Select Quantity');
@@ -55,10 +60,17 @@ class CartController extends GetxController {
       } else {
         cartItems.add(selectedCartItem);
       }
+      userController.userModel.update((user) {
+        user!.balance -= product.price;
+      });
 
       // UPDATE THE USER CART
       updateCart();
+      // UPDATE THE PRODUCT QUANTITY IN CART
       productQuantityInCart.value = 0;
+      update();
+      // UPDATE THE USER  BALANCE IN LOCAL STORAGE
+      updateUser(userController.userModel.value.balance.toInt());
 
       // TRIGGER A SUCCESS MESSAGE
       PLoaders.customToast(message: 'Your Product has been added to Cart');
@@ -69,14 +81,6 @@ class CartController extends GetxController {
 
 // CONVERT PRODUCT TO CARTMMODELITEM
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
-    // final price = isVariation
-    //     ? variation.salePrice! > 0.0
-    //         ? variation.salePrice
-    //         : variation.price
-    //     : product.salePrice! > 0.0
-    //         ? product.salePrice
-    //         : product.price;
-
     return CartItemModel(
       productId: product.id,
       quantity: quantity,
@@ -88,6 +92,12 @@ class CartController extends GetxController {
 
 // ADD ONE ITEM TO CART
   void addItemToCart(CartItemModel item) {
+    if (item.price > userController.userModel.value.balance) {
+      PLoaders.errorSnackBar(
+          title: "Ooops!",
+          message: 'your tros balance is low for this product');
+      return;
+    }
     int index = cartItems
         .indexWhere((cartItem) => cartItem.productId == item.productId);
     if (index >= 0) {
@@ -95,8 +105,11 @@ class CartController extends GetxController {
     } else {
       cartItems.add(item);
     }
-
+    userController.userModel.update((user) {
+      user!.balance -= item.price;
+    });
     updateCart();
+    updateUser(userController.userModel.value.balance.toInt());
     PLoaders.customToast(message: 'Product has been added to Cart');
   }
 
@@ -115,18 +128,22 @@ class CartController extends GetxController {
             : cartItems.removeAt(index);
       }
     }
-
+    userController.userModel.update((user) {
+      user!.balance += item.price;
+    });
     updateCart();
-    // PLoaders.customToast(message: 'Product has been removed to Cart');
+    updateUser(userController.userModel.value.balance.toInt());
+
+    PLoaders.customToast(message: 'Product has been removed to Cart');
   }
 
   // INITIALIZE ALREADY ADDED PRODUCT
-  void updateAlreadyAddedProductInCart(ProductModel product) {
-    // if product has no variation then calculate cartEntries and display total number.
-    // Else make default entries to 0 and show cartEntries when variation is selected
+  // void updateAlreadyAddedProductInCart(ProductModel product) {
+  //   // if product has no variation then calculate cartEntries and display total number.
+  //   // Else make default entries to 0 and show cartEntries when variation is selected
 
-    productQuantityInCart.value = getProductQuantityInCart(product.id);
-  }
+  //   productQuantityInCart.value = getProductQuantityInCart(product.id);
+  // }
 
   // UPDATE THE LOCAL STORAGE OF SPECIFIC USER
   void updateCart() {
@@ -157,7 +174,6 @@ class CartController extends GetxController {
 
 // GET CARTITEMS FROM LOCAL STORAGE
   void loadCartItems() async {
-    await PLocalStorage.init(id);
     final cartItemsStrings =
         PLocalStorage.instance().readData<List<dynamic>>('cartItems');
     debugPrint(cartItemsStrings.toString());
@@ -198,5 +214,9 @@ class CartController extends GetxController {
           Get.back();
         },
         onCancel: () => () => Get.back());
+  }
+
+  void updateUser(int balance) {
+    userController.saveBalance(balance);
   }
 }
