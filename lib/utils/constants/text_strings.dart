@@ -20,7 +20,7 @@ class PTexts {
   static const String onBoardingSubTitle2 =
       "Recycle product will help save the environment and foster a better earth";
   static const String onBoardingSubTitle3 =
-      "Earn tron coin, cash and rewards for saving the environment";
+      "Earn tros coin, cash and rewards for saving the environment";
 
 // home
   static const String homeAppBarTitle = "Shopping made easy today";

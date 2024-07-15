@@ -6,6 +6,7 @@ import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/features/authentication/repository/authentication_repository.dart';
 import 'package:tros/navigation_menu.dart';
 
+import '../../../../utils/helpers/network_manager.dart';
 import '../../../personalization/controllers/userController.dart';
 
 // import '../../../../utils/helpers/network_manager.dart';
@@ -24,6 +25,7 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
 
   final userController = Get.put(UserController());
+
   final userToken = ''.obs;
 
   @override
@@ -39,11 +41,13 @@ class LoginController extends GetxController {
       // START LOADING
       // PFullScreenLoader.openLoadingDialog('Logging in.... ', PImages.loading);
       // CHECK INTERNET CONNECTIVITY
-      // final isConnected = await NetworkManager.instance.isConnected();
-      // if (!isConnected) {
-      //   PFullScreenLoader.stopLoading();
-      //   return;
-      // }
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        PLoaders.errorSnackBar(
+            title: "Ooops!", message: 'No internet connection');
+
+        return;
+      }
 
       // FORM VALIDATION
       if (!loginFormKey.currentState!.validate()) {
@@ -51,10 +55,7 @@ class LoginController extends GetxController {
 
         return;
       }
-      // STORE REMEMBER ME
-      if (rememberMe.value) {
-        localStorage.writeIfNull('remember_me', true);
-      }
+
       final details = <String, String>{
         'password': password.text.trim(),
         'email': email.text.trim(),
@@ -63,13 +64,19 @@ class LoginController extends GetxController {
       final user = await AuthenticationRepository.instance.signin(details);
       userToken.value = user['accessToken'];
 
+      // STORE REMEMBER ME
+      if (rememberMe.value) {
+        localStorage.write('remember_me', true);
+        localStorage.writeIfNull('remember_me_email', email.text.trim());
+        localStorage.writeIfNull('remember_me_password', password.text.trim());
+      }
       // REMOVE LOADER
       isLoading.value = false;
       // GET UER DETAIL
       await userController.getUser(user);
 
       // REDIRECT TO HOME
-      Get.to(() => const NavigationMenu());
+      Get.offAll(() => const NavigationMenu());
       // AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       isLoading.value = false;

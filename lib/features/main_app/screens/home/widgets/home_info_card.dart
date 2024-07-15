@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/images/circular_images.dart';
@@ -6,29 +7,29 @@ import 'package:tros/features/authentication/controllers/login/login_controller.
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 
+import '../../../../personalization/controllers/userController.dart';
+
 class HomeInfoCard extends StatelessWidget {
   const HomeInfoCard({
     super.key,
-    required this.controller,
   });
-
-  final LoginController controller;
 
   @override
   Widget build(BuildContext context) {
+    final user = UserController.instance;
     return TRoundedContainer(
-      width: 353,
-      height: 206,
+      width: 340,
+      height: 190,
       backgroundColor: PColors.containerGrey,
       radius: 16,
       child: Column(
         children: [
           // Container containing the tros coin balance, recycle rate, tros coin image
           TRoundedContainer(
-            height: 206 - 65,
+            height: 190 - 65,
             backgroundColor: PColors.transparent,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -40,116 +41,79 @@ class HomeInfoCard extends StatelessWidget {
                       children: [
                         // Tros coin text
                         Text(
-                          'Tros Coin',
-                          style: Theme.of(context).textTheme.titleMedium,
+                          'Available balance',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .apply(fontSizeDelta: -1),
                         ),
                         // Tros coin balance text
                         Row(
                           children: [
-                            Text(
-                              '10,080',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge!
-                                  .apply(fontSizeDelta: -10),
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                controller.hidePassword.value
-                                    ? Iconsax.eye_slash_outline
-                                    : Iconsax.eye_outline,
-                                size: 14,
-                              ),
-                              onPressed: () => controller.hidePassword.value =
-                                  !controller.hidePassword.value,
-                            ),
+                            Obx(() {
+                              return Text(
+                                user.hideBalance.value
+                                    ? '****'
+                                    : user.userModel.value.balance.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge!
+                                    .apply(fontSizeDelta: -14),
+                              );
+                            }),
+                            Obx(() {
+                              return IconButton(
+                                padding: EdgeInsets.zero,
+                                visualDensity: const VisualDensity(
+                                    horizontal: 0, vertical: -4),
+                                icon: Icon(
+                                  user.hideBalance.value
+                                      ? Iconsax.eye_slash_outline
+                                      : Iconsax.eye_outline,
+                                  size: 14,
+                                ),
+                                onPressed: () => user.hideBalance.value =
+                                    !user.hideBalance.value,
+                              );
+                            }),
                           ],
                         ),
-                        // Tros Recycle rate
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  '780',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .apply(
-                                          fontWeightDelta: 4, fontSizeDelta: 2),
-                                ),
-                                Container(
-                                  height: 10,
-                                  width: 10,
-                                  decoration: const BoxDecoration(
-                                      color: PColors.primary,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(70),
-                                        topRight: Radius.circular(70),
-                                      )),
-                                )
-                              ],
-                            ),
-                            // Recycle rate
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  'Recycle rate',
-                                  style: TextStyle(
-                                      color: PColors.black,
-                                      fontSize: 10,
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.w500),
-                                ))
-                          ],
-                        )
+                        const PCircularImage(
+                          imageUrl: PImages.tros,
+                          backgroundColor: PColors.transparent,
+                        ),
                       ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const PCircularImage(
-                          imageUrl: PImages.tros,
-                          backgroundColor: PColors.transparent,
-                        ),
-                        TRoundedContainer(
-                          backgroundColor: PColors.borderPrimary,
-                          width: 135,
-                          radius: 8,
-                          height: 36,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 2.0, horizontal: 4),
+                        // IconButton(
+                        //   onPressed: () {},
+                        //   icon: const Icon(Icons.notifications_none_outlined),
+                        // ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 2.0, horizontal: 4),
+                          child: GestureDetector(
+                            onTap: () {},
                             child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Tros coin 1,000=\$0.01',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: const Text(
-                                    'convert',
-                                    style: TextStyle(
-                                        color: PColors.black,
-                                        fontSize: 10,
-                                        decoration: TextDecoration.underline,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                )
-                              ],
-                            ),
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Transaction history',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall!
+                                          .apply(
+                                              decoration:
+                                                  TextDecoration.underline)),
+                                ]),
                           ),
                         )
                       ],

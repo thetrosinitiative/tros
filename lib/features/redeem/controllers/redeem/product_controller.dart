@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../../../common/loaders/loaders.dart';
+import '../../../../utils/helpers/network_manager.dart';
 import '../../models/redeem/redeem_model.dart';
 import '../../repositories/redeem/product_repository.dart';
 
@@ -18,6 +19,13 @@ class ProductController extends GetxController {
   }
 
   Future<List<ProductModel>> fetchProductQuery() async {
+    final isConnected = await NetworkManager.instance.isConnected();
+    if (!isConnected) {
+      PLoaders.errorSnackBar(
+          title: "Ooops!", message: 'No internet connection');
+
+      return [];
+    }
     try {
       final products = await repository.getAllProducts();
       return products;

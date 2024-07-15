@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tros/features/redeem/controllers/redeem/product_controller.dart';
-import 'package:tros/features/redeem/models/redeem/redeem_model.dart';
 
 import '../../../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
 import '../../../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../../../common/widgets/images/edge_rounded_images.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/image_strings.dart';
+import '../../../../models/redeem/redeem_model.dart';
 
 class ProductContainer extends StatelessWidget {
   const ProductContainer({

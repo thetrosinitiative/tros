@@ -5,23 +5,21 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app.dart';
 import 'features/authentication/repository/authentication_repository.dart';
-import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
-import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 Future<void> main() async {
   //   Add Widgets Binding
-  AndroidMapRenderer mapRenderer = AndroidMapRenderer.platformDefault;
+  // AndroidMapRenderer mapRenderer = AndroidMapRenderer.platformDefault;
 
   final WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
   // Todo: initialize map renderer
 
-  final GoogleMapsFlutterPlatform mapsImplementation =
-      GoogleMapsFlutterPlatform.instance;
-  if (mapsImplementation is GoogleMapsFlutterAndroid) {
-    mapRenderer = await mapsImplementation
-        .initializeWithRenderer(AndroidMapRenderer.latest);
-  }
+  // final GoogleMapsFlutterPlatform mapsImplementation =
+  //     GoogleMapsFlutterPlatform.instance;
+  // if (mapsImplementation is GoogleMapsFlutterAndroid) {
+  //   mapRenderer = await mapsImplementation
+  //       .initializeWithRenderer(AndroidMapRenderer.latest);
+  // }
   // Init local storage
   await GetStorage.init();
   // Todo: init payment methods
@@ -36,10 +34,10 @@ Future<void> main() async {
   Get.put(AuthenticationRepository());
 
 // Load all the material design / Themes / Localization / goo
-  // runApp(DevicePreview(
-  //   builder: (BuildContext context) {
-  //     return const App();
-  //   },
-  // ));
+  runApp(DevicePreview(
+    builder: (BuildContext context) {
+      return const App();
+    },
+  ));
   runApp(const App());
 }

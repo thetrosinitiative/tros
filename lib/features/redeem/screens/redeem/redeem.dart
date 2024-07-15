@@ -9,6 +9,7 @@ import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.d
 import 'package:tros/common/widgets/icons/circular_icon.dart';
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
 import 'package:tros/common/widgets/texts/section_heading.dart';
+import 'package:tros/features/redeem/models/redeem/redeem_model.dart';
 import 'package:tros/features/redeem/screens/exchange/exchange.dart';
 import 'package:tros/features/redeem/screens/redeem/redeem_detail/widgets/redeem_detail.dart';
 import 'package:tros/utils/constants/colors.dart';
@@ -16,12 +17,11 @@ import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
 
-import '../../../../common/widgets/products/cart/cart_menu_icon.dart';
+import '../../../../common/widgets/icons/cart_menu_icon.dart';
 import '../../../../common/widgets/shimmers/product_shimmer.dart';
 import '../../../../utils/helpers/cloud_helper.dart';
 import '../../controllers/redeem/cart_controller.dart';
 import '../../controllers/redeem/product_controller.dart';
-import '../../models/redeem/redeem_model.dart';
 import '../cart/cart.dart';
 import 'redeem_detail/widgets/product_container.dart';
 

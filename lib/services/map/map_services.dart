@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tros/common/loaders/loaders.dart';
 import 'package:tros/services/location/location_service.dart';
 import 'package:tros/utils/http/http_client.dart';
 
@@ -32,13 +30,16 @@ class TMapService extends GetxController {
   final String types = 'geocode';
   // initialize permission
   @override
-  onInit() {
-    init();
+  onInit() async {
+    await init().then((value) {
+      controller = Completer();
+    });
     super.onInit();
   }
 
   Future<void> init() async {
-    controller = Completer();
+    final locator = Get.put(TGeolocator());
+    await locator.getLatLang();
   }
 
   Future<List<AutoCompleteResult>> searchPlaces(String searchInput) async {

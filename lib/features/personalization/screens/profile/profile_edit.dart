@@ -33,7 +33,7 @@ class EditProfile extends StatelessWidget {
               ),
               //Profile Pics
               const PCircularImage(
-                imageUrl: PImages.appLogo,
+                imageUrl: PImages.profile,
                 height: 70,
                 width: 70,
                 backgroundColor: PColors.containerGrey,

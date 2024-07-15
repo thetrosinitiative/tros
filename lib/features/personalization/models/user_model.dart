@@ -13,7 +13,7 @@ class UserModel {
   String? profilePicture;
   bool emailVerified;
   bool phoneVerified;
-  int balance;
+  double balance;
 
   // List addresses;
   UserModel({
@@ -37,7 +37,7 @@ class UserModel {
     String? profilePicture,
     bool? emailVerified,
     bool? phoneVerified,
-    int? balance,
+    double? balance,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -80,7 +80,7 @@ class UserModel {
       profilePicture: map['profilePicture'],
       emailVerified: map['emailVerified'] ?? false,
       phoneVerified: map['phoneVerified'] ?? false,
-      balance: map['balance']?.toInt() ?? 0,
+      balance: map['balance']?.toDouble() ?? 0.0,
     );
   }
 

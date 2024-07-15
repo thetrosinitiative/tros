@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:tros/common/loaders/loaders.dart';
-import 'package:tros/services/map/map_services.dart';
-
-import '../../features/main_app/screens/map/models/auto_complete_result.dart';
 
 class TGeolocator extends GetxController {
   static TGeolocator get instance => Get.find();
@@ -36,7 +33,8 @@ class TGeolocator extends GetxController {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     // if (permissionEnabled.value) return true;
     if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
+      PLoaders.errorSnackBar(
+          title: "Ooops!", message: 'Location services are disabled.');
     }
     _permission = await Geolocator.checkPermission();
     if (_permission == LocationPermission.denied) {
@@ -47,7 +45,8 @@ class TGeolocator extends GetxController {
         // do something
         permissionEnabled.value = false;
         PLoaders.errorSnackBar(
-            title: "Ooops!", message: 'Location permissions are denied');
+            title: "Ooops!",
+            message: 'Location is denied, please enable and try again.');
         return permissionEnabled.value = false;
       }
     }
@@ -56,7 +55,8 @@ class TGeolocator extends GetxController {
 
       PLoaders.errorSnackBar(
           title: "Ooops!",
-          message: 'Location permissions are permanently denied');
+          message:
+              'Location is permanently denied, please enable and try again.');
       return permissionEnabled.value = false;
     }
     return permissionEnabled.value = true;
@@ -72,10 +72,9 @@ class TGeolocator extends GetxController {
     final hasPermission = await _determinePosition();
     if (!hasPermission) return;
     await _getPosition().then((Position position) {
-      longitude(position.longitude);
+      longitude.value = position.longitude;
+      latitude.value = position.latitude;
       debugPrint(latitude.value.toString());
-
-      latitude(position.latitude);
       update();
     });
   }

@@ -1,8 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 
@@ -37,7 +33,7 @@ class _MapWidgetState extends State<MapWidget> {
         // padding: const EdgeInsets.only(
         //   top: 600.0,
         // ),
-        zoomControlsEnabled: false,
+        // zoomControlsEnabled: false,
         myLocationEnabled: true,
         // myLocationButtonEnabled: true,
         mapType: MapType.normal,

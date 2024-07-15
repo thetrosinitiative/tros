@@ -4,15 +4,19 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tros/features/authentication/screens/login/login.dart';
 import 'package:tros/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:tros/features/personalization/controllers/userController.dart';
+import 'package:tros/features/personalization/models/user_model.dart';
 import 'package:tros/navigation_menu.dart';
 import 'package:tros/utils/exceptions/auth_esception.dart';
 import 'package:tros/utils/http/http_client.dart';
+import 'package:tros/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   // VARIABLES
   final deviceStorage = GetStorage();
+  final user = Get.put(UserController());
 
   // CALLED FROM THE main.dart on app launch
   @override
@@ -23,16 +27,40 @@ class AuthenticationRepository extends GetxController {
 
   // FUNCTION TO SHOW REDIRECT SCREEN
   screenRedirect() async {
-    if (kDebugMode) {
-      print(
-          '---------------------------- GET STORAGE AUTH REPO ----------------------------');
-      print(deviceStorage.read('isFirstTime'));
-    }
+    // if (kDebugMode) {
+    //   print(
+    //       '---------------------------- GET STORAGE AUTH REPO ----------------------------');
+    //   print(deviceStorage.read('isFirstTime'));
+    // }
     // LOCAL STORAGE
+
+    // if (user.userModel.value != UserModel.empty()) {
+    //   await PLocalStorage.init(user.userModel.value.id);
+    // }
     await deviceStorage.writeIfNull('isFirstTime', true);
     await deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const NavigationMenu())
+        ? Get.offAll(() => const LoginScreen())
+        // await deviceStorage.read('remember_me') != true
+        //     ? Get.offAll(() => const LoginScreen())
+        //     : signInFaster()
         : Get.offAll(() => const OnBoardingScreen());
+  }
+
+  Future<void> signInFaster() async {
+    final email = deviceStorage.read('remember_me_email');
+    final password = deviceStorage.read('remember_me_password');
+    final details = <String, String>{
+      'password': password.trim(),
+      'email': email.trim(),
+    };
+    debugPrint(details.toString());
+    // LOGIN USER
+    final userr = await signin(details);
+
+    await user.getUser(userr);
+
+    // REDIRECT TO HOME
+    Get.offAll(() => const NavigationMenu());
   }
 
   //  ------------------------------- Email and Password signin --------------------------
@@ -148,5 +176,11 @@ class AuthenticationRepository extends GetxController {
 
   //  ---------------------------------------OTHER VERIFICATION ---------------
   // LOGOUT USER
+  void signOut() async {
+    user.userModel.value = UserModel.empty();
+    await deviceStorage.write('remember_me', false);
+    // await deviceStorage.write('user', {});
+    Get.offAll(() => const LoginScreen());
+  }
   // DELETE USER
 }

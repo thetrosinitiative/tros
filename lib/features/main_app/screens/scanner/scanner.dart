@@ -10,6 +10,8 @@ import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
 
+import '../../../personalization/controllers/userController.dart';
+
 class ScannerPage extends StatelessWidget {
   const ScannerPage({super.key});
 
@@ -95,6 +97,7 @@ class _QRScannerState extends State<QRScanner> {
 
   @override
   Widget build(BuildContext context) {
+    final user = UserController.instance;
     return MobileScanner(
       fit: BoxFit.cover,
       // overlayBuilder: (_, __) => const TRoundedContainer(
@@ -113,6 +116,9 @@ class _QRScannerState extends State<QRScanner> {
           debugPrint(barcode.rawValue);
         }
         if (image != null) {
+          user.userModel.value.balance = user.userModel.value.balance + 200;
+          user.userModel.refresh();
+          user.saveBalance(user.userModel.value.balance.toInt());
           Get.off(() => const ScanValidateScreen());
         } else {
           showDialog(

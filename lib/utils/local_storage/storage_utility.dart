@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class PLocalStorage {
@@ -18,6 +19,7 @@ class PLocalStorage {
     await GetStorage.init(bucketName);
     _instance = PLocalStorage._internal();
     _instance!._storage = GetStorage(bucketName);
+    debugPrint(' storage with $bucketName initializwd');
   }
 
 // generic method to save data

@@ -8,8 +8,8 @@ import 'package:tros/utils/constants/colors.dart';
 class ListTileProperties {
   ListTileProperties({required this.size});
   double size = 18;
-  final auth = AuthenticationRepository.instance;
-  List listTileWidget(size) {
+  static final auth = AuthenticationRepository.instance;
+  static List listTileWidget(size) {
     return [
       {
         'title': 'Edit Profile',
@@ -53,7 +53,7 @@ class ListTileProperties {
           size: size,
           color: PColors.error,
         ),
-        // 'onTap':()=>auth.signOut();
+        'onTap': () => auth.signOut()
       },
     ];
   }

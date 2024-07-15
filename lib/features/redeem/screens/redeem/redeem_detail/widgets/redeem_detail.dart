@@ -6,11 +6,11 @@ import 'package:tros/common/widgets/buttons/bottom_elevated_button.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:tros/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:tros/common/widgets/images/edge_rounded_images.dart';
-import 'package:tros/common/widgets/products/cart/add_remove_button.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/image_strings.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
+import '../../../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../controllers/redeem/cart_controller.dart';
 import '../../../../models/redeem/redeem_model.dart';
 

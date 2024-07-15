@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tros/common/styles/spacing_styles.dart';
 import 'package:tros/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:tros/services/location/location_service.dart';
 import 'package:tros/utils/constants/colors.dart';
 import 'package:tros/utils/constants/sizes.dart';
 
@@ -22,10 +21,15 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   int markerIdCounter = 1;
+  @override
+  void initState() {
+    Get.put(TMapService());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final mapController = Get.put(TMapService());
+    final mapController = TMapService.instance;
 
     final screenWidth = PDeviceUtils.getScreenWidth(context);
     return Scaffold(
@@ -62,40 +66,40 @@ class _MapPageState extends State<MapPage> {
                   const SizedBox(
                     height: PSizes.spaceBtwItems,
                   ),
-                  Stack(
-                    children: [
-                      TRoundedContainer(
-                        width: 300,
-                        height: 40,
-                        backgroundColor: PColors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 40),
-                          child: Text(
-                            'List',
-                            textAlign: TextAlign.end,
-                            style: Theme.of(context).textTheme.titleSmall,
-                          ),
-                        ),
-                      ),
-                      TRoundedContainer(
-                        width: 150,
-                        height: 40,
-                        backgroundColor: PColors.primary,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0, horizontal: 40),
-                          child: Text(
-                            'Map',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .apply(color: PColors.light),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
+                  // Stack(
+                  //   children: [
+                  //     TRoundedContainer(
+                  //       width: 300,
+                  //       height: 40,
+                  //       backgroundColor: PColors.white,
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             vertical: 8.0, horizontal: 40),
+                  //         child: Text(
+                  //           'List',
+                  //           textAlign: TextAlign.end,
+                  //           style: Theme.of(context).textTheme.titleSmall,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     TRoundedContainer(
+                  //       width: 150,
+                  //       height: 40,
+                  //       backgroundColor: PColors.primary,
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             vertical: 8.0, horizontal: 40),
+                  //         child: Text(
+                  //           'Map',
+                  //           style: Theme.of(context)
+                  //               .textTheme
+                  //               .titleSmall!
+                  //               .apply(color: PColors.light),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
             )

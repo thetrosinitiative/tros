@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:tros/common/widgets/images/circular_images.dart';
-import 'package:tros/common/widgets/products/cart/cart_menu_icon.dart';
+import 'package:tros/common/widgets/icons/cart_menu_icon.dart';
 import 'package:tros/features/main_app/screens/scanner/scanner.dart';
 import 'package:tros/features/personalization/controllers/userController.dart';
 import 'package:tros/features/personalization/screens/settings.dart';
@@ -12,6 +12,7 @@ import 'package:tros/utils/constants/sizes.dart';
 import 'package:tros/utils/device/device_utility.dart';
 import 'package:tros/utils/helpers/helper_functions.dart';
 
+import '../../../../../common/widgets/icons/exchange_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -37,7 +38,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               const PCircularImage(
                 width: 40,
                 height: 40,
-                imageUrl: PImages.appLogo,
+                imageUrl: PImages.profile,
                 backgroundColor: PColors.containerGrey,
               ),
               const SizedBox(
@@ -54,10 +55,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-            onPressed: () => Get.to(() => const ScannerPage()),
-            icon: const Icon(Iconsax.scan_barcode_outline)),
         const CartCounterIcon(iconColor: PColors.primary),
+        const ExchangeCounterIcon(),
         IconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_none_outlined))
